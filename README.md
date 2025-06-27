@@ -8,5 +8,5 @@
 
 | Número | Proyecto | Código |
 |:---:|:---:|:---:|
-| `01` | SpaceTecnology | [Ir](SpaceTecnology/) |
+| `01` | SpaceTecnology | [Ir](Projects/SpaceTecnology/) |
 | ... | ... | ... |
