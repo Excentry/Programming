@@ -6,5 +6,6 @@
 
 ## 💻 PROYECTOS 💻
 
-| Número | Proyecto | 
-| `01` | [SpaceTecnology] (projects/SpaceTecnology) |
+| Número | Proyecto | Código |
+| --- | --- | --- |
+| `01` | SpaceTecnology | [Ir](projects/SpaceTecnology/) |
