@@ -1,3 +1,3 @@
 # Proyects
 ## 1 - SpaceTecnology
-## 2 - New-Web-Beta
+## 2 - New-Web
