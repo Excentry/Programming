@@ -1,9 +1,10 @@
 <div align="center">
 
-# 🔰 MY PROYECTS 🔰
+# 🔰 MIS PROYECTOS 🔰
 
 </div>
 
-## 💻 PROYECTS 💻
+## 💻 PROYECTOS 💻
 
-- 01: [SpaceTecnology 🚀]
+| Número | Proyecto | 
+| `01` | [SpaceTecnology] (projects/SpaceTecnology) |
