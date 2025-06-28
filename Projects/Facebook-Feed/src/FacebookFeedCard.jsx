@@ -14,6 +14,7 @@ export function FacebookFeedCard({
   feedImage,
   likesQuantity,
   commentQuantity,
+  likesIcon
 }) {
   const [isLike, setIsLike] = useState(initialIsLike);
   const [likes, setLikesQuantity] = useState(likesQuantity);
@@ -24,15 +25,42 @@ export function FacebookFeedCard({
     }
   }, [initialIsLike, likesQuantity]);
 
-  const buttonLikeColor = isLike && likes > 0 ? 'blue' : '#b0b3b8';
-  const commentQuantityText =
-    commentQuantity === 1 ? 'Comentario' : 'Comentarios';
+  const buttonLikeColor = isLike && likes > 0 ? '#1e76ff' : '#b0b3b8';
 
   const handleLikeClick = () => {
     isLike ? setLikesQuantity(likes - 1) : setLikesQuantity(likes + 1);
 
     setIsLike(!isLike);
   };
+
+  const likesText =
+    likes === 1 && isLike
+      ? 'Tú'
+      : likes === 1 && !isLike
+      ? '1'
+      : likes < 1000 && isLike
+      ? 'Tú y ' + (likes - 1) + (likes - 1 === 1 ? ' persona más' : ' personas más')
+      : likes < 1000 && !isLike
+      ? likes.toString()
+      : likes < 1000000 && isLike
+      ? 'Tú y ' +
+        ((likes - 1) / 1000).toFixed(1).replace('.', ',') +
+        ' mil personas más'
+      : likes < 1000000 && !isLike
+      ? (likes / 1000).toFixed(1).replace('.', ',') + ' mil'
+      : (likes / 1000000).toFixed(1).replace('.', ',') + ' mill.';
+
+  const commentsText =
+    commentQuantity === 1
+      ? '1 Comentario'
+      : commentQuantity < 1000
+      ? commentQuantity + ' Comentarios'
+      : commentQuantity < 1000000
+      ? (commentQuantity / 1000).toFixed(1).replace('.', ',') +
+        ' mil Comentarios'
+      : (commentQuantity / 1000000).toFixed(1).replace('.', ',') +
+        ' mill. Comentarios';
+
   const showLikes =
     likes > 0
       ? 'fb-feedCard-footer-likes-quantity'
@@ -80,12 +108,10 @@ export function FacebookFeedCard({
         <section className={showContainer}>
           <div className='fb-feedCard-footer-likes-comments'>
             <span className={showLikes}>
-              <span>❤️</span>
-              {likes}
+              <span>{likesIcon}</span>
+              {likesText}
             </span>
-            <span className={showComments}>
-              {commentQuantity} {commentQuantityText}
-            </span>
+            <span className={showComments}>{commentsText}</span>
           </div>
           <hr className='fb-feedCard-footer-divider' />
         </section>
