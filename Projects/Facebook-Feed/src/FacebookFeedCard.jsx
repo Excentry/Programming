@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   FaGlobeAmericas,
   FaThumbsUp,
@@ -18,7 +18,13 @@ export function FacebookFeedCard({
   const [isLike, setIsLike] = useState(initialIsLike);
   const [likes, setLikesQuantity] = useState(likesQuantity);
 
-  const buttonLikeColor = isLike ? 'blue' : '#b0b3b8';
+  useEffect(() => {
+    if (initialIsLike && likesQuantity === 0) {
+      setLikesQuantity(1);
+    }
+  }, [initialIsLike, likesQuantity]);
+
+  const buttonLikeColor = isLike && likes > 0 ? 'blue' : '#b0b3b8';
   const commentQuantityText =
     commentQuantity === 1 ? 'Comentario' : 'Comentarios';
 
@@ -27,8 +33,20 @@ export function FacebookFeedCard({
 
     setIsLike(!isLike);
   };
+  const showLikes =
+    likes > 0
+      ? 'fb-feedCard-footer-likes-quantity'
+      : 'fb-feedCard-footer-likes-quantity-empty';
 
-  const showContainer = ((likes > 0 && commentQuantity > 0) || (likes > 0) || (commentQuantity > 0)) ? 'fb-feedCard-footer-likes-comments-container' : 'fb-feedCard-footer-likes-comments-container-empty';
+  const showComments =
+    commentQuantity > 0
+      ? 'fb-feedCard-footer-comments-quantity'
+      : 'fb-feedCard-footer-comments-quantity-empty';
+
+  const showContainer =
+    (likes > 0 && commentQuantity > 0) || likes > 0 || commentQuantity > 0
+      ? 'fb-feedCard-footer-likes-comments-container'
+      : 'fb-feedCard-footer-likes-comments-container-empty';
 
   return (
     <article className='fb-feedCard'>
@@ -61,11 +79,11 @@ export function FacebookFeedCard({
       <footer className='fb-feedCard-footer'>
         <section className={showContainer}>
           <div className='fb-feedCard-footer-likes-comments'>
-            <span className='fb-feedCard-footer-likes-quantity'>
+            <span className={showLikes}>
               <span>❤️</span>
               {likes}
             </span>
-            <span className='fb-feedCard-footer-comments-quantity'>
+            <span className={showComments}>
               {commentQuantity} {commentQuantityText}
             </span>
           </div>

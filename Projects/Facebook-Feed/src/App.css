@@ -72,10 +72,19 @@
   color: #b0b3b8;
 }
 
+.fb-feedCard-footer-comments-quantity-empty {
+  display: none;
+}
+
 .fb-feedCard-footer-likes-quantity {
   display: flex;
   align-items: center;
   gap: 4px;
+}
+
+.fb-feedCard-footer-likes-quantity-empty {
+  visibility: hidden;
+  padding-bottom: 4px;
 }
 
 .fb-feedCard-footer-likes-quantity span {
