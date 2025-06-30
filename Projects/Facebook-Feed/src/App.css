@@ -1,7 +1,7 @@
 .fb-feedCard {
-  background-color: #252728;
+  background: #252728;
   border-radius: 10px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   margin: 5px;
   max-width: 900px;
   font-family: 'San Francisco', Helvetica;
@@ -28,8 +28,12 @@
 }
 
 .fb-feedCard-info strong {
-  font-size: 13px;
+  font-size: 16px;
   color: #fff;
+}
+
+.feedCard-Color-Light .fb-feedCard-header .fb-feedCard-info strong {
+  color: black;
 }
 
 .fb-feedCard-info span {
@@ -38,15 +42,18 @@
   color: #b0b3b8;
 }
 
-.fb-feedCard-subInfo {
-  display: flex;
-  align-items: center;  
-  gap: 6px;             
-  font-size: 12px;
-  color: #b0b3b8;
-  margin-top: 2px;  
+.feedCard-Color-Light .fb-feedCard-header .fb-feedCard-info .fb-feedCard-subInfo span {
+  color: #65686c;
 }
 
+.fb-feedCard-subInfo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #b0b3b8;
+  margin-top: 2px;
+}
 
 .fb-feedCard-content {
   margin-bottom: 4px;
@@ -72,8 +79,23 @@
   color: #b0b3b8;
 }
 
+.feedCard-Color-Light .fb-feedCard-footer span{
+  color: #65686c;
+}
+
+.fb-feedCard-footer-comments-quantity {
+  display: flex;
+  align-items: center;
+}
+
 .fb-feedCard-footer-comments-quantity-empty {
-  display: none;
+  visibility: hidden;
+}
+
+.fb-feedCard-footer-comments-quantity span {
+  font-size: 16px;
+  margin-top: 3px;
+  padding: 2px 0px;
 }
 
 .fb-feedCard-footer-likes-quantity {
@@ -82,13 +104,14 @@
   gap: 4px;
 }
 
-.fb-feedCard-footer-likes-quantity-empty {
-  visibility: hidden;
-  padding-bottom: 4px;
-}
-
 .fb-feedCard-footer-likes-quantity span {
   font-size: 16px;
+  margin-top: 4px;
+  padding: 2px 0px;
+}
+
+.fb-feedCard-footer-likes-quantity-empty {
+  visibility: hidden;
   padding-bottom: 4px;
 }
 
@@ -107,7 +130,12 @@
   padding: 0px 10px 0px 10px;
 }
 
+.fb-feedCard-footer-actions .fb-Fa-Icons {
+  font-size: 18px;
+}
+
 .fb-feedCard-footer-actions span {
+  margin: 0px 3px;
   cursor: pointer;
   font-size: 16px;
   padding: 8px 12px;
@@ -115,8 +143,23 @@
   flex: 1;
   text-align: center;
   border-radius: 5px;
-  transition: background-color 0.2s ease;
+  transition: background 0.5s ease;
   user-select: none;
+  -webkit-transition: background 0.5s ease;
+  -moz-transition: background 0.5s ease;
+  -ms-transition: background 0.5s ease;
+  -o-transition: background 0.5s ease;
+}
+
+.fb-feedCard-footer-actions > span > span {
+  vertical-align: 0.4vh;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: max-width 0.5s ease, opacity 0.5s ease;
+}
+
+.fb-feedCard-footer-actions > span:hover {
+  background: #3b3d3e;
 }
 
 .fb-feedCard-footer-likes-comments-container {
@@ -127,6 +170,79 @@
   display: none;
 }
 
-.fb-feedCard-footer-actions span:hover {
-  background-color: #3b3d3e;
+.Button-Mode {
+  outline: none;
+  display: flex;
+  position: fixed;
+  color: black;
+  background: white;
+  top: 10px;
+  right: 14px;
+  justify-content: center;
+  align-items: center;
+  font-size: 4.1vh; 
+  border-radius: 5px;
+  border: none;
+  box-shadow: white 4px 4px 12px;
+  cursor: pointer;
+  transition: all 0.8s ease;
+  width: 8vh;
+  height: 8vh;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.8s ease;
+  -ms-transition: all 0.8s ease;
+  -o-transition: all 0.8s ease;
+}
+
+.Button-Mode:hover {
+  color: #fff;
+  background: linear-gradient(135deg, #aa01ff 20%, #020056 80%, #000 100%);
+  box-shadow: #aa01ff 4px 4px 12px;
+}
+
+.Button-Mode-Light {
+  color: yellow;
+  background: #252728;
+  box-shadow: black 4px 4px 12px;
+}
+
+.Button-Mode-Light:hover {
+  color: black;
+  background: linear-gradient(135deg, #fe8801 20%, #ffff00 50%, #fff 100%);
+  box-shadow: yellow 4px 4px 12px;
+}
+
+@keyframes hideText {
+  0% {
+    display: none;
+  }
+  100% {
+    display: none;
+  }
+}
+
+@keyframes showText {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .fb-feedCard-footer-actions > span > span {
+    animation: hideText 0.5s forwards;
+    -webkit-animation: hideText 0.5s forwards;
+  }
+
+  .fb-feedCard-footer-actions .fb-Fa-Icons {
+    font-size: 28px;
+  }
+}
+
+@media (min-width: 601px) {
+  .fb-feedCard-footer-actions > span > span {
+    animation: showText 0.5s forwards;
+  }
 }

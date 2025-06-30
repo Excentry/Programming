@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import { FacebookFeedCard } from './FacebookFeedCard.jsx';
+import { FaMoon, FaSun } from 'react-icons/fa'
 
 function getRandomDateFormatted() {
   const now = new Date();
@@ -98,7 +99,7 @@ const users = [
   {
     userName: 'angular',
     name: 'Angular',
-    isLike: true,
+    isLike: false,
     dateTime: getRandomDateFormatted(),
     feedImage: getRandomImage(),
     likesQuantity: 100,
@@ -108,8 +109,36 @@ const users = [
 ];
 
 export function App() {
+  const [isDark, setColor] = useState(() => {
+    const savedTheme = localStorage.getItem('TypeOfTheme');
+    return savedTheme ? JSON.parse(savedTheme) : true;
+  });
+
+  useEffect(() => {
+    localStorage.setItem('TypeOfTheme', JSON.stringify(isDark));
+  }, [isDark]);
+
+  const changeMode = () => {
+    setColor(!isDark);
+  };
+  
+  useEffect(() => {
+    document.body.style.background = isDark ? '#1c1c1d' : '#cccccc';
+  }, [isDark]);
+
+  const buttonIcon = isDark ? <FaMoon /> : <FaSun />;
+  const buttonTheme = isDark ? '' : 'Button-Mode-Light';
+
   return (
     <section className='App'>
+      <section>
+        <button
+          onKeyDown={(e) => e.preventDefault()}
+          className={`Button-Mode ${buttonTheme}`} onClick={changeMode}>
+            {buttonIcon}
+        </button>
+      </section>
+
       {users.map(
         ({
           userName,
@@ -130,6 +159,7 @@ export function App() {
             likesQuantity={likesQuantity}
             commentQuantity={commentQuantity}
             likesIcon={likesIcon}
+            isDark={isDark}
           >
             {name}
           </FacebookFeedCard>
