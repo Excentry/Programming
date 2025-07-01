@@ -3,7 +3,7 @@ import {
   FaGlobeAmericas,
   FaThumbsUp,
   FaComment,
-  FaShare
+  FaShare,
 } from 'react-icons/fa';
 
 export function FacebookFeedCard({
@@ -15,7 +15,7 @@ export function FacebookFeedCard({
   likesQuantity,
   commentQuantity,
   likesIcon,
-  isDark
+  isDark,
 }) {
   const [isLike, setIsLike] = useState(initialIsLike);
   const [likes, setLikesQuantity] = useState(likesQuantity);
@@ -26,7 +26,8 @@ export function FacebookFeedCard({
     }
   }, [initialIsLike, likesQuantity]);
 
-  const buttonLikeColor = isLike && likes > 0 ? '#1e76ff' : !isLike && isDark ? '#b0b3b8' : '#65686c';
+  const buttonLikeColor =
+    isLike && likes > 0 ? '#2374E1' : !isLike && isDark ? '#b0b3b8' : '#65686c';
   const actionButtonsColor = isDark ? '#b0b3b8' : '#65686c';
 
   const handleLikeClick = () => {
@@ -35,8 +36,9 @@ export function FacebookFeedCard({
     setIsLike(!isLike);
   };
 
-  const cardTheme = isDark ? '' : 'feedCard-Color-Light';
-  const cardColor = isDark ? '#252728' : '#fff'
+  const footerTheme = isDark ? '' : 'actions-hover-color-light'
+  const cardTheme = isDark ? '' : 'feedCard-color-light';
+  const cardColor = isDark ? '#252728' : '#fff';
 
   const likesText =
     likes === 1 && isLike
@@ -54,7 +56,7 @@ export function FacebookFeedCard({
         ((likes - 1) / 1000).toFixed(1).replace('.', ',') +
         ' mil personas más'
       : likes < 1000000 && !isLike
-      ? (likes / 1000) + ' mil'
+      ? likes / 1000 + ' mil'
       : (likes / 1000000).toFixed(1).replace('.', ',') + ' mill.';
 
   const commentsText =
@@ -84,7 +86,10 @@ export function FacebookFeedCard({
       : 'fb-feedCard-footer-likes-comments-container-empty';
 
   return (
-    <article className={`fb-feedCard ${cardTheme}`} style={{ background: cardColor }}>
+    <article
+      className={`fb-feedCard ${cardTheme}`}
+      style={{ background: cardColor }}
+    >
       <header className='fb-feedCard-header'>
         <img
           className='fb-feedCard-avatar'
@@ -103,13 +108,13 @@ export function FacebookFeedCard({
         </div>
       </header>
 
-      <div className='fb-feedCard-content'>
+      <main className='fb-feedCard-content'>
         <img
           className='fb-feedCard-image'
           src={`https://picsum.photos/seed/${feedImage}/600/500`}
           alt='imagen del feed'
         />
-      </div>
+      </main>
 
       <footer className='fb-feedCard-footer'>
         <section className={showContainer}>
@@ -124,10 +129,19 @@ export function FacebookFeedCard({
           </div>
           <hr className='fb-feedCard-footer-divider' />
         </section>
-        <div className='fb-feedCard-footer-actions'>
+        <div className={`fb-feedCard-footer-actions ${footerTheme}`}>
           <span className='fb-feedCard-footer-likes' onClick={handleLikeClick}>
             <FaThumbsUp className='fb-Fa-Icons' color={buttonLikeColor} />
             <span style={{ color: buttonLikeColor }}>Me gusta</span>
+            <div className='fb-feedCard-footer-likes-menu' style={{ background: cardColor }}>
+              <span>👍</span>
+              <span>❤️</span>
+              <span>🥰</span>
+              <span>😄</span>
+              <span>😲</span>
+              <span>😢</span>
+              <span>😠</span>
+            </div>
           </span>
           <span className='fb-feedCard-footer-comments'>
             <FaComment className='fb-Fa-Icons' color={actionButtonsColor} />

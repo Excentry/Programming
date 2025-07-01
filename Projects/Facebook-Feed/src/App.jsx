@@ -118,7 +118,7 @@ export function App() {
     localStorage.setItem('TypeOfTheme', JSON.stringify(isDark));
   }, [isDark]);
 
-  const changeMode = () => {
+  const btnChangeTheme = () => {
     setColor(!isDark);
   };
   
@@ -127,14 +127,14 @@ export function App() {
   }, [isDark]);
 
   const buttonIcon = isDark ? <FaMoon /> : <FaSun />;
-  const buttonTheme = isDark ? '' : 'Button-Mode-Light';
+  const ChangeTheme = isDark ? '' : 'btn-theme-light';
 
   return (
     <section className='App'>
       <section>
         <button
           onKeyDown={(e) => e.preventDefault()}
-          className={`Button-Mode ${buttonTheme}`} onClick={changeMode}>
+          className={`btn-theme ${ChangeTheme}`} onClick={btnChangeTheme}>
             {buttonIcon}
         </button>
       </section>
