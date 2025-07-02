@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import { FacebookFeedCard } from './FacebookFeedCard.jsx';
-import { FaMoon, FaSun } from 'react-icons/fa'
+import { FaMoon, FaSun } from 'react-icons/fa';
 
 function getRandomDateFormatted() {
   const now = new Date();
@@ -55,6 +55,48 @@ function getRandomLikes() {
   return randomIcon;
 }
 
+function getRandomReactions(likesQuantity) {
+  const emojis = ['👍', '❤️', '🥰', '😄', '😲', '😢', '😠'];
+
+  if (likesQuantity === 0) {
+    return emojis.reduce((acc, emoji) => {
+      acc[emoji] = 0;
+      return acc;
+    }, {});
+  }
+
+  const minReactions = likesQuantity < 100 ? 2 : likesQuantity < 5000 ? 3 : 4;
+  const maxReactions = emojis.length;
+
+  const numberOfReactions =
+    Math.floor(Math.random() * (maxReactions - minReactions + 1)) +
+    minReactions;
+
+  const shuffledEmojis = [...emojis].sort(() => 0.5 - Math.random());
+  const selectedEmojis = shuffledEmojis.slice(0, numberOfReactions);
+
+  let remainingLikes = likesQuantity;
+
+  const reactionsCount = emojis.reduce((acc, emoji) => {
+    acc[emoji] = 0;
+    return acc;
+  }, {});
+
+  selectedEmojis.forEach((emoji, index) => {
+    if (index === selectedEmojis.length - 1) {
+      reactionsCount[emoji] = remainingLikes;
+    } else {
+      const likesForThisEmoji = Math.floor(
+        Math.random() * (remainingLikes + 1)
+      );
+      reactionsCount[emoji] = likesForThisEmoji;
+      remainingLikes -= likesForThisEmoji;
+    }
+  });
+
+  return reactionsCount;
+}
+
 const users = [
   {
     userName: 'midudev',
@@ -64,17 +106,17 @@ const users = [
     feedImage: getRandomImage(),
     likesQuantity: 1000000,
     commentQuantity: 0,
-    likesIcon: getRandomLikes()
+    reactionsCount: getRandomReactions(1000000),
   },
   {
     userName: 'Excentry',
     name: 'Excentry',
-    isLike: true,
+    isLike: false,
     dateTime: getRandomDateFormatted(),
     feedImage: getRandomImage(),
     likesQuantity: 2,
     commentQuantity: 3000,
-    likesIcon: getRandomLikes()
+    reactionsCount: getRandomReactions(2),
   },
   {
     userName: 'pheralb',
@@ -84,7 +126,7 @@ const users = [
     feedImage: getRandomImage(),
     likesQuantity: 0,
     commentQuantity: 0,
-    likesIcon: getRandomLikes()
+    reactionsCount: getRandomReactions(0),
   },
   {
     userName: 'reactjs',
@@ -94,7 +136,7 @@ const users = [
     feedImage: getRandomImage(),
     likesQuantity: 1200,
     commentQuantity: 1000000,
-    likesIcon: getRandomLikes()
+    reactionsCount: getRandomReactions(1200),
   },
   {
     userName: 'angular',
@@ -104,7 +146,7 @@ const users = [
     feedImage: getRandomImage(),
     likesQuantity: 100,
     commentQuantity: 1,
-    likesIcon: getRandomLikes()
+    reactionsCount: getRandomReactions(100),
   },
 ];
 
@@ -121,7 +163,7 @@ export function App() {
   const btnChangeTheme = () => {
     setColor(!isDark);
   };
-  
+
   useEffect(() => {
     document.body.style.background = isDark ? '#1c1c1d' : '#cccccc';
   }, [isDark]);
@@ -134,8 +176,10 @@ export function App() {
       <section>
         <button
           onKeyDown={(e) => e.preventDefault()}
-          className={`btn-theme ${ChangeTheme}`} onClick={btnChangeTheme}>
-            {buttonIcon}
+          className={`btn-theme ${ChangeTheme}`}
+          onClick={btnChangeTheme}
+        >
+          {buttonIcon}
         </button>
       </section>
 
@@ -148,7 +192,7 @@ export function App() {
           feedImage,
           likesQuantity,
           commentQuantity,
-          likesIcon
+          reactionsCount,
         }) => (
           <FacebookFeedCard
             key={userName}
@@ -158,7 +202,7 @@ export function App() {
             feedImage={feedImage}
             likesQuantity={likesQuantity}
             commentQuantity={commentQuantity}
-            likesIcon={likesIcon}
+            initialReactionsCount={reactionsCount}
             isDark={isDark}
           >
             {name}

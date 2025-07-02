@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { act, useEffect, useState } from 'react';
 import {
   FaGlobeAmericas,
   FaThumbsUp,
@@ -14,11 +14,24 @@ export function FacebookFeedCard({
   feedImage,
   likesQuantity,
   commentQuantity,
-  likesIcon,
+  initialReactionsCount,
   isDark,
 }) {
   const [isLike, setIsLike] = useState(initialIsLike);
   const [likes, setLikesQuantity] = useState(likesQuantity);
+  const [likeSelected, setLikeSelected] = useState(null);
+  const [showReactionsMenu, setShowReactionsMenu] = useState(false);
+  const [reactionsCount, setReactionsCount] = useState(initialReactionsCount);
+
+  const reactions = [
+    { emoji: '👍', color: '#2374E1', text: 'Me gusta' },
+    { emoji: '❤️', color: '#f66666', text: 'Me encanta' },
+    { emoji: '🥰', color: '#f66666', text: 'Me importa' },
+    { emoji: '😄', color: '#f9d31a', text: 'Me divierte' },
+    { emoji: '😲', color: '#f9d31a', text: 'Me asombra' },
+    { emoji: '😢', color: '#f9d31a', text: 'Me entristece' },
+    { emoji: '😠', color: '#f56666', text: 'Me enoja' },
+  ];
 
   useEffect(() => {
     if (initialIsLike && likesQuantity === 0) {
@@ -27,16 +40,79 @@ export function FacebookFeedCard({
   }, [initialIsLike, likesQuantity]);
 
   const buttonLikeColor =
-    isLike && likes > 0 ? '#2374E1' : !isLike && isDark ? '#b0b3b8' : '#65686c';
+    isLike && likes > 0
+      ? likeSelected
+        ? likeSelected.color
+        : '#2374E1'
+      : !isLike && isDark
+      ? '#b0b3b8'
+      : '#65686c';
+
   const actionButtonsColor = isDark ? '#b0b3b8' : '#65686c';
 
   const handleLikeClick = () => {
-    isLike ? setLikesQuantity(likes - 1) : setLikesQuantity(likes + 1);
-
-    setIsLike(!isLike);
+    isLike
+      ? (setLikesQuantity(likes - 1),
+        setIsLike(false),
+        setLikeSelected(null),
+        setReactionsCount((prev) => ({
+          ...prev,
+          [likeSelected.emoji]: prev[likeSelected.emoji] - 1,
+        })))
+      : (setLikesQuantity(likes + 1),
+        setIsLike(true),
+        setLikeSelected(reactions[0]),
+        setReactionsCount((prev) => ({
+          ...prev,
+          ['👍']: prev['👍'] + 1,
+        })));
   };
 
-  const footerTheme = isDark ? '' : 'actions-hover-color-light'
+  const handleEmojiClick = (e, reaction) => {
+    e.stopPropagation();
+
+    if (isLike && likeSelected.emoji === reaction.emoji) return;
+
+    likeSelected !== null
+      ? (setLikeSelected(reaction),
+        setReactionsCount((prev) => ({
+          ...prev,
+          [likeSelected.emoji]: prev[likeSelected.emoji] - 1,
+          [reaction.emoji]: (prev[reaction.emoji] || 0) + 1,
+        })))
+      : (setLikesQuantity(likes + 1),
+        setIsLike(true),
+        setLikeSelected(reaction),
+        setReactionsCount((prev) => ({
+          ...prev,
+          [reaction.emoji]: (prev[reaction.emoji] || 0) + 1,
+        })));
+
+    setShowReactionsMenu(false);
+  };
+
+  const getTopReactions = () => {
+    const top = Object.entries(reactionsCount)
+      .filter(([emoji, count]) => count > 0)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 3);
+
+    return top.map(([emoji], index) => (
+      <span
+        key={index}
+        className='reaction-icon'
+        style={{
+          border: `1px solid ${cardColor}`,
+          background: `${cardColor}`,
+          zIndex: top.length - index, // El primero tendrá el mayor z-index
+        }}
+      >
+        {emoji}
+      </span>
+    ));
+  };
+
+  const footerTheme = isDark ? '' : 'actions-hover-color-light';
   const cardTheme = isDark ? '' : 'feedCard-color-light';
   const cardColor = isDark ? '#252728' : '#fff';
 
@@ -120,7 +196,7 @@ export function FacebookFeedCard({
         <section className={showContainer}>
           <div className='fb-feedCard-footer-likes-comments'>
             <span className={showLikes}>
-              {likesIcon}
+              <div className='reaction-group'>{getTopReactions()}</div>
               <span>{likesText}</span>
             </span>
             <span className={showComments}>
@@ -130,17 +206,36 @@ export function FacebookFeedCard({
           <hr className='fb-feedCard-footer-divider' />
         </section>
         <div className={`fb-feedCard-footer-actions ${footerTheme}`}>
-          <span className='fb-feedCard-footer-likes' onClick={handleLikeClick}>
-            <FaThumbsUp className='fb-Fa-Icons' color={buttonLikeColor} />
-            <span style={{ color: buttonLikeColor }}>Me gusta</span>
-            <div className='fb-feedCard-footer-likes-menu' style={{ background: cardColor }}>
-              <span>👍</span>
-              <span>❤️</span>
-              <span>🥰</span>
-              <span>😄</span>
-              <span>😲</span>
-              <span>😢</span>
-              <span>😠</span>
+          <span
+            className='fb-feedCard-footer-likes'
+            onClick={handleLikeClick}
+            onMouseEnter={() => setShowReactionsMenu(true)}
+            onMouseLeave={() => setShowReactionsMenu(false)}
+          >
+            {likeSelected && likeSelected.emoji !== '👍' ? (
+              <span className='fb-Fa-Icons'>{likeSelected.emoji}</span>
+            ) : (
+              <FaThumbsUp className='fb-Fa-Icons' color={buttonLikeColor} />
+            )}
+            <span style={{ color: buttonLikeColor }}>
+              {likeSelected && likeSelected.emoji !== '👍'
+                ? likeSelected.text
+                : 'Me gusta'}
+            </span>
+            <div
+              className={`fb-feedCard-footer-likes-menu ${
+                showReactionsMenu ? 'show' : ''
+              }`}
+              style={{ background: cardColor }}
+            >
+              {reactions.map((reaction, index) => (
+                <span
+                  key={index}
+                  onClick={(e) => handleEmojiClick(e, reaction)}
+                >
+                  {reaction.emoji}
+                </span>
+              ))}
             </div>
           </span>
           <span className='fb-feedCard-footer-comments'>
