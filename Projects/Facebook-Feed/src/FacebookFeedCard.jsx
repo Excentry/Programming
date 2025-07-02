@@ -103,7 +103,7 @@ export function FacebookFeedCard({
         className='reaction-icon'
         style={{
           border: `1px solid ${cardColor}`,
-          background: `${cardColor}`,
+          background: cardColor,
           zIndex: top.length - index, // El primero tendrá el mayor z-index
         }}
       >
