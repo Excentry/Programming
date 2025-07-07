@@ -260,7 +260,7 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (width <= 600px) {
   .fb-feedCard-footer-actions > span > span {
     animation: hideText 0.8s forwards;
   }
@@ -270,7 +270,7 @@
   }
 }
 
-@media (min-width: 601px) {
+@media (width > 600px) {
   .fb-feedCard-footer-actions > span > span {
     animation: showText 0.8s forwards;
   }
