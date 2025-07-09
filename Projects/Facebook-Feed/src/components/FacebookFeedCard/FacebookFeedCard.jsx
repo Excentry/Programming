@@ -68,7 +68,7 @@ export function FacebookFeedCard({
           alt='feed-img no loading...'
           onError={(e) => {
             if (!e.target.dataset.fallback) {
-              e.target.src = '/images/image-missing.svg';
+              e.target.src = '/image-missing.svg';
               e.target.alt = 'image not found, reload the page if the problem persists.';
               e.target.dataset.fallback = true;
             }

@@ -83,19 +83,19 @@ export function useReactions({
       ? 'Tú'
       : likes === 1 && !isLike
       ? '1'
-      : likes < 1000 && isLike
+      : likes < 1_000 && isLike
       ? 'Tú y ' +
         (likes - 1) +
         (likes - 1 === 1 ? ' persona más' : ' personas más')
-      : likes < 1000 && !isLike
+      : likes < 1_000 && !isLike
       ? likes.toString()
-      : likes < 1000000 && isLike
+      : likes < 1_000_000 && isLike
       ? 'Tú y ' +
-        ((likes - 1) / 1000).toFixed(1).replace('.', ',') +
+        ((likes - 1) / 1_000).toFixed(1).replace('.', ',') +
         ' mil personas más'
-      : likes < 1000000 && !isLike
-      ? likes / 1000 + ' mil'
-      : (likes / 1000000).toFixed(1).replace('.', ',') + ' mill.';
+      : likes < 1_000_000 && !isLike
+      ? likes / 1_000 + ' mil'
+      : (likes / 1_000_000).toFixed(1).replace('.', ',') + ' mill.';
 
   const buttonLikeColor =
     isLike && likes > 0
@@ -109,12 +109,12 @@ export function useReactions({
   const commentsText =
     commentQuantity === 1
       ? '1 comentario'
-      : commentQuantity < 1000
+      : commentQuantity < 1_000
       ? commentQuantity + ' comentarios'
-      : commentQuantity < 1000000
-      ? (commentQuantity / 1000).toFixed(1).replace('.', ',') +
+      : commentQuantity < 1_000_000
+      ? (commentQuantity / 1_000).toFixed(1).replace('.', ',') +
         ' mil comentarios'
-      : (commentQuantity / 1000000).toFixed(1).replace('.', ',') +
+      : (commentQuantity / 1_000_000).toFixed(1).replace('.', ',') +
         ' mill. comentarios';
 
   const showLikes =
