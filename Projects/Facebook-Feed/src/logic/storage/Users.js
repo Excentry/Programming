@@ -3,7 +3,7 @@ import {
   getRandomImage,
   getRandomReactions,
 } from '../funtions/RandomFuntions.js';
-import { generatePostId } from './postId.js';
+import { generatePostId } from './PostId.js';
 
 export const users = (() => {
   let ids = {};
