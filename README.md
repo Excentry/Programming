@@ -34,7 +34,6 @@
 
 <div align="center">
 
-✨ Gracias por visitar ✨  
-📫 Contacto: -------------------------
+## ✨ Gracias por visitar ✨  
 
 </div>
