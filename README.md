@@ -35,6 +35,6 @@
 <div align="center">
 
 ✨ Gracias por visitar ✨  
-📫 Contacto: [brayanjimenez5218@gmail.com](mailto:brayanjimenez5218@gmail.com)
+📫 Contacto: -------------------------
 
 </div>
