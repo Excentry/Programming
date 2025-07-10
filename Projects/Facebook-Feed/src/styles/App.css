@@ -262,18 +262,18 @@
 
 @media (width <= 600px) {
   .fb-feedCard {
-    max-width: 450px;
+    max-width: 400px;
   }
 
   .fb-feedCard-image {
-    height: 350px;
-    width: 450px;
+    height: 320px;
+    width: 400px;
   }
 
   .btn-theme {
-    font-size: 3vh;
-    width: 6vh;
-    height: 6vh;
+    font-size: 2.7vh;
+    width: 5.5vh;
+    height: 5.5vh;
   }
 
   .fb-feedCard-footer-actions {
