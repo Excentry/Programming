@@ -3,7 +3,7 @@
   border-radius: 10px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   margin: 5px;
-  max-width: 900px;
+  max-width: 700px;
   font-family: 'San Francisco', Helvetica;
   color: #050505;
   transition: all 0.5s ease;
@@ -261,6 +261,21 @@
 }
 
 @media (width <= 600px) {
+  .fb-feedCard {
+    max-width: 450px;
+  }
+
+  .fb-feedCard-image {
+    height: 350px;
+    width: 450px;
+  }
+
+  .btn-theme {
+    font-size: 3vh;
+    width: 6vh;
+    height: 6vh;
+  }
+
   .fb-feedCard-footer-actions {
     height: 2.8rem;
   }
