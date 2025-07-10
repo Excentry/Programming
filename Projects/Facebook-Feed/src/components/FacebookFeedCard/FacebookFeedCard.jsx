@@ -77,7 +77,8 @@ export function FacebookFeedCard({
       <main className='fb-feedCard-content'>
         <img
           className='fb-feedCard-image'
-          src={`https://picsum.photos/seed/${feedImage}/600/500`}
+          src={`https://picsum.photos/seed/${feedImage}/600/500.webp`}
+          typeof='image/webp'
           alt='feed-img no loading...'
           onError={(e) => {
             if (!e.target.dataset.fallback) {
