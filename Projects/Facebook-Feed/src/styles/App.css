@@ -266,8 +266,8 @@
   }
 
   .fb-feedCard-image {
-    height: 300px;
-    width: 370px;
+    height: 320px;
+    width: 380px;
   }
 
   .btn-theme {
@@ -277,15 +277,16 @@
   }
 
   .fb-feedCard-footer-actions {
-    height: 2.8rem;
+    height: 2.3rem;
   }
 
   .fb-feedCard-footer-actions > span > span {
     animation: hideText 0.8s forwards;
-  }
+    -webkit-animation: hideText 0.8s forwards;
+}
 
   .fb-feedCard-footer-actions .fb-Fa-Icons {
-    font-size: 28px;
+    font-size: 20px;
     transform: translateX(-12px);
     -webkit-transform: translateX(-12px);
     -moz-transform: translateX(-12px);
