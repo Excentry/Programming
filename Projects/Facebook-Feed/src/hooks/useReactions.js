@@ -78,30 +78,32 @@ export function useReactions({
     setShowReactionsMenu(false);
   };
 
-  const likesText =
-    likes === 1 && isLike
-      ? 'Tú'
-      : likes === 1 && !isLike
-      ? '1'
-      : likes < 1_000 && isLike
-      ? 'Tú y ' +
+  let likesText = '';
+
+  if (likes === 1) {
+    likesText = isLike ? 'Tú' : '1';
+  } else if (likes < 1_000) {
+    if (isLike) {
+      likesText =
+        'Tú y ' +
         (likes - 1) +
-        (likes - 1 === 1 ? ' persona más' : ' personas más')
-      : likes < 1_000 && !isLike
-      ? likes.toString()
-      : likes < 1_000_000 && isLike
+        (likes - 1 === 1 ? ' persona más' : ' personas más');
+    } else {
+      likesText = likes.toString();
+    }
+  } else if (likes < 1_000_000) {
+    likesText = isLike
       ? 'Tú y ' +
         ((likes - 1) / 1_000).toFixed(1).replace('.', ',') +
         ' mil personas más'
-      : likes < 1_000_000 && !isLike
-      ? likes / 1_000 + ' mil'
-      : (likes / 1_000_000).toFixed(1).replace('.', ',') + ' mill.';
+      : likes / 1_000 + ' mil';
+  } else {
+    likesText = (likes / 1_000_000).toFixed(1).replace('.', ',') + ' mill.';
+  }
 
   const buttonLikeColor =
     isLike && likes > 0
-      ? likeSelected
-        ? likeSelected.color
-        : '#2374E1'
+      ? likeSelected?.color || '#2374E1'
       : !isLike && isDark
       ? '#b0b3b8'
       : '#65686c';
@@ -110,12 +112,14 @@ export function useReactions({
     commentQuantity === 1
       ? '1 comentario'
       : commentQuantity < 1_000
-      ? commentQuantity + ' comentarios'
+      ? `${commentQuantity} comentarios`
       : commentQuantity < 1_000_000
-      ? (commentQuantity / 1_000).toFixed(1).replace('.', ',') +
-        ' mil comentarios'
-      : (commentQuantity / 1_000_000).toFixed(1).replace('.', ',') +
-        ' mill. comentarios';
+      ? `${(commentQuantity / 1_000)
+          .toFixed(1)
+          .replace('.', ',')} mil comentarios`
+      : `${(commentQuantity / 1_000_000)
+          .toFixed(1)
+          .replace('.', ',')} mill. comentarios`;
 
   const showLikes =
     likes > 0
