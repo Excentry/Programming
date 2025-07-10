@@ -280,6 +280,16 @@
     height: 2.3rem;
   }
 
+  .fb-feedCard-footer-likes-menu {
+    margin-top: 2.03rem;
+  }
+
+  .fb-feedCard-footer-likes-menu.show span {
+    font-size: 24px;
+    padding: 0;
+    margin: 0;
+  }
+
   .fb-feedCard-footer-actions > span > span {
     animation: hideText 0.8s forwards;
     -webkit-animation: hideText 0.8s forwards;
