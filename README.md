@@ -21,7 +21,7 @@
 ## 🧭 Navegación rápida
 
 - [📁 Ver todos los proyectos en la carpeta `/Projects`](./Projects)
-- [🏠 Volver al inicio](#mis-proyectos)
+- [🏠 Volver al inicio](./)
 
 ---
 
