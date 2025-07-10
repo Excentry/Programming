@@ -133,6 +133,7 @@
   display: flex;
   cursor: pointer;
   align-items: center;
+  margin-top: -0.15rem;
 }
 
 .reaction-icon {
@@ -158,10 +159,85 @@
   z-index: 99 !important;
 }
 
+.reaction-wrapper {
+  position: relative;
+}
+
+.reaction-count-bubble {
+  position: absolute;
+  flex-direction: column;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  height: auto;
+  width: auto;
+  background: rgba(255, 255, 255, 0.6);
+  color: black;
+  border-radius: 10px;
+  padding: 4px 4px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+  white-space: nowrap;
+  left: 35%;
+  transform: translate(-50%, -3.4rem);
+}
+
+.reaction-count-bubble::after {
+  content: '';
+  position: absolute;
+  top: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px 5px 0 5px;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.6) transparent transparent transparent;
+}
+
+.reaction-wrapper:hover .reaction-count-bubble {
+  visibility: visible;
+  opacity: 1;
+}
+
+.reaction-count-bubble strong {
+  font-size: 0.9rem;
+  padding-bottom: 0.5rem;
+}
+
+.reaction-count-bubble div {
+  font-size: 0.83rem;
+}
+
 .fb-feedCard-footer-likes-quantity {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.fb-feedCard-footer-likes-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.fb-feedCard-footer-likes-underline::after {
+  content: '';
+  position: absolute;
+  transform: scaleX(0);
+  width: 100%;
+  height: 1px;
+  bottom: 1.2px;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  transform-origin: buttom center;
+  transition: transform 0.3s ease;
+}
+
+.fb-feedCard-footer-likes-quantity:hover
+  .fb-feedCard-footer-likes-underline::after {
+  transform: scaleX(1);
+  transform-origin: buttom center;
 }
 
 .fb-feedCard-footer-likes-quantity span {
@@ -290,16 +366,11 @@
 
   .fb-feedCard-footer-actions .buttons-text {
     animation: hideText 0.8s forwards;
-    -webkit-animation: hideText 0.8s forwards;
   }
 
   .fb-feedCard-footer-actions .fb-Fa-Icons {
     font-size: 20px;
     transform: translateX(-12px);
-    -webkit-transform: translateX(-12px);
-    -moz-transform: translateX(-12px);
-    -ms-transform: translateX(-12px);
-    -o-transform: translateX(-12px);
   }
 }
 
@@ -320,24 +391,12 @@
   pointer-events: none;
   box-shadow: rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
   z-index: 4;
-  -webkit-border-radius: 50px;
-  -moz-border-radius: 50px;
-  -ms-border-radius: 50px;
-  -o-border-radius: 50px;
-  -webkit-transform: translateY(0) translateX(-0.9rem);
-  -moz-transform: translateY(0) translateX(-0.9rem);
-  -ms-transform: translateY(0) translateX(-0.9rem);
-  -o-transform: translateY(0) translateX(-0.9rem);
 }
 
 .fb-feedCard-footer-likes-menu.show {
   opacity: 1;
   transform: translateY(-4.875rem) translateX(-0.9rem);
   animation: enablePointer 0s 0.3s forwards;
-  -webkit-transform: translateY(-4.875rem) translateX(-0.9rem);
-  -moz-transform: translateY(-4.875rem) translateX(-0.9rem);
-  -ms-transform: translateY(-4.875rem) translateX(-0.9rem);
-  -o-transform: translateY(-4.875rem) translateX(-0.9rem);
 }
 
 @keyframes enablePointer {

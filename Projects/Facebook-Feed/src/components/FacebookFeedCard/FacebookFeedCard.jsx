@@ -31,25 +31,38 @@ export function FacebookFeedCard({
     visibility: { showLikes, showComments, showContainer },
   } = useReactions({ postId, ...rest });
 
+  const numberFormat = new Intl.NumberFormat('en-US');
   const getTopReactions = () => {
     const top = Object.entries(reactionsCount)
       .filter(([emoji, count]) => count > 0)
       .sort((a, b) => b[1] - a[1])
       .slice(0, 3);
 
-    return top.map(([emoji], index) => (
-      <span
-        key={index}
-        className='reaction-icon'
-        style={{
-          border: `1px solid ${cardColor}`,
-          background: cardColor,
-          zIndex: top.length - index,
-        }}
-      >
-        {emoji}
-      </span>
-    ));
+    return top.map(([emoji, count], index) => {
+      const reaction = reactions.find((r) => r.emoji === emoji);
+
+      return (
+        <div
+          key={index}
+          className='reaction-wrapper'
+          style={{ zIndex: top.length - index }}
+        >
+          <div className='reaction-count-bubble'>
+            <strong>{reaction.text}</strong>
+            <div>{numberFormat.format(count)}</div>
+          </div>
+          <span
+            className='reaction-icon'
+            style={{
+              border: `1px solid ${cardColor}`,
+              background: cardColor,
+            }}
+          >
+            {emoji}
+          </span>
+        </div>
+      );
+    });
   };
 
   return (
@@ -69,7 +82,8 @@ export function FacebookFeedCard({
           onError={(e) => {
             if (!e.target.dataset.fallback) {
               e.target.src = '/image-missing.svg';
-              e.target.alt = 'image not found, reload the page if the problem persists.';
+              e.target.alt =
+                'image not found, reload the page if the problem persists.';
               e.target.dataset.fallback = true;
             }
           }}

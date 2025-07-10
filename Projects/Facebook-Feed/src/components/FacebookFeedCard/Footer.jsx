@@ -17,7 +17,7 @@ export function Footer({
         <div className='fb-feedCard-footer-likes-comments'>
           <span className={showLikes}>
             <div className='reaction-group'>{getTopReactions()}</div>
-            <span>{likesText}</span>
+            <span className='fb-feedCard-footer-likes-underline'>{likesText}</span>
           </span>
           <span className={showComments}>
             <span>{commentsText}</span>
