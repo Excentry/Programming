@@ -281,9 +281,8 @@
   }
 
   .fb-feedCard-footer-likes-menu {
-    margin-top: 2.03rem;
+    margin-top: 20px;
   }
-
 
   .fb-feedCard-footer-actions > span > span {
     animation: hideText 0.8s forwards;
@@ -352,8 +351,4 @@
 .fb-feedCard-footer-likes-menu span:hover {
   scale: 1.4;
   transition: scale 0.5s ease;
-  -webkit-transition: scale 0.5s ease;
-  -moz-transition: scale 0.5s ease;
-  -ms-transition: scale 0.5s ease;
-  -o-transition: scale 0.5s ease;
 }
