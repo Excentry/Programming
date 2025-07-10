@@ -32,8 +32,8 @@
 
 ---
 
-<div align="center">
+<div align="center" style="font-size:32px; font-weight:bold;>
 
-## ✨ Gracias por visitar ✨  
+✨ Gracias por visitar ✨  
 
 </div>
