@@ -20,11 +20,11 @@ export function LikesButton({
       onMouseLeave={() => setShowReactionsMenu(false)}
     >
       {likeSelected && likeSelected.emoji !== '👍' ? (
-        <span className='fb-Fa-Icons'>{likeSelected.emoji}</span>
+        <span className='fb-Fa-Icons fb-Fa-Emoji'>{likeSelected.emoji}</span>
       ) : (
         <FaThumbsUp className='fb-Fa-Icons' color={buttonLikeColor} />
       )}
-      <span style={{ color: buttonLikeColor }}>
+      <span className='buttons-text' style={{ color: buttonLikeColor }}>
         {likeSelected && likeSelected.emoji !== '👍'
           ? likeSelected.text
           : 'Me gusta'}

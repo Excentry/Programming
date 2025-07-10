@@ -213,6 +213,10 @@
   line-height: 1.2;
 }
 
+.fb-feedCard-footer-actions .fb-Fa-Emoji {
+  line-height: 1;
+}
+
 .fb-feedCard-footer-actions span {
   margin: 0px 3px;
   cursor: pointer;
@@ -234,7 +238,7 @@
   background: #c5c6c7;
 }
 
-.fb-feedCard-footer-actions > span > span {
+.fb-feedCard-footer-actions .buttons-text {
   vertical-align: 0.4vh;
   margin-left: 15px;
   white-space: nowrap;
@@ -284,10 +288,10 @@
     margin-top: 20px;
   }
 
-  .fb-feedCard-footer-actions > span > span {
+  .fb-feedCard-footer-actions .buttons-text {
     animation: hideText 0.8s forwards;
     -webkit-animation: hideText 0.8s forwards;
-}
+  }
 
   .fb-feedCard-footer-actions .fb-Fa-Icons {
     font-size: 20px;
@@ -300,7 +304,7 @@
 }
 
 @media (width > 600px) {
-  .fb-feedCard-footer-actions > span > span {
+  .fb-feedCard-footer-actions .buttons-text {
     animation: showText 0.8s forwards;
   }
 }

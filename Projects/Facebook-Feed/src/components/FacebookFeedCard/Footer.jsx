@@ -30,11 +30,11 @@ export function Footer({
         <LikesButton {...likeButtonProps} />
         <span className='fb-feedCard-footer-comments'>
           <FaComment className='fb-Fa-Icons' color={actionButtonsColor} />
-          <span>Comentarios</span>
+          <span className='buttons-text'>Comentarios</span>
         </span>
         <span className='fb-feedCard-footer-shares'>
           <FaShare className='fb-Fa-Icons' color={actionButtonsColor} />
-          <span>Compartir</span>
+          <span className='buttons-text'>Compartir</span>
         </span>
       </div>
     </footer>
