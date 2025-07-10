@@ -262,12 +262,12 @@
 
 @media (width <= 600px) {
   .fb-feedCard {
-    max-width: 400px;
+    max-width: 380px;
   }
 
   .fb-feedCard-image {
-    height: 320px;
-    width: 400px;
+    height: 300px;
+    width: 370px;
   }
 
   .btn-theme {
