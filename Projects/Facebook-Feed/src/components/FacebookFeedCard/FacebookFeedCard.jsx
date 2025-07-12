@@ -26,6 +26,7 @@ export function FacebookFeedCard({
       cardColor,
       buttonLikeColor,
       actionButtonsColor,
+      underlineTheme,
     },
     displayTexts: { likesText, commentsText },
     visibility: { showLikes, showComments, showContainer },
@@ -45,7 +46,7 @@ export function FacebookFeedCard({
         <div
           key={index}
           className='reaction-wrapper'
-          style={{ zIndex: top.length - index }}
+          style={{ zIndex: top.length - index }}  
         >
           <div className='reaction-count-bubble'>
             <strong>{reaction.text}</strong>
@@ -77,8 +78,8 @@ export function FacebookFeedCard({
       <main className='fb-feedCard-content'>
         <img
           className='fb-feedCard-image'
-          src={`https://picsum.photos/seed/${feedImage}/600/500.webp`}
-          typeof='image/webp'
+          src={`https://picsum.photos/seed/${feedImage}/600/500.webp?${Date.now()}`}
+          loading='lazy'
           alt='feed-img no loading...'
           onError={(e) => {
             if (!e.target.dataset.fallback) {
@@ -99,6 +100,7 @@ export function FacebookFeedCard({
         showComments={showComments}
         commentsText={commentsText}
         footerTheme={footerTheme}
+        underlineTheme={underlineTheme}
         likeButtonProps={{
           isLike,
           likeSelected,

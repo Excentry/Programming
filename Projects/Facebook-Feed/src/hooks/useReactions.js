@@ -4,12 +4,14 @@ import {
   getLikeForUser,
   saveLikeToStorage,
 } from '../logic/storage/LikeStorage.js';
+
 export function useReactions({
   postId,
   likesQuantity,
   commentQuantity,
   initialReactionsCount,
   isDark,
+  toast,
 }) {
   const stored = getLikeForUser(postId);
 
@@ -22,6 +24,12 @@ export function useReactions({
     stored?.reactionsCount ?? initialReactionsCount
   );
   const [showReactionsMenu, setShowReactionsMenu] = useState(false);
+
+  const $backgroundColor = isDark ? '#1c1c1d' : '#ecececff';
+  const $color = isDark ? 'white' : 'black';
+  const $borderColor = `1px solid ${isDark ? 'white' : 'black'}`;
+  const $size = '13.8rem';
+  const $fontSize = '1rem';
 
   useEffect(() => {
     saveLikeToStorage(postId, {
@@ -37,6 +45,16 @@ export function useReactions({
       ? (setLikesQuantity(likes - 1),
         setIsLike(false),
         setLikeSelected(null),
+        toast.warning('Me gusta eliminado.', {
+          duration: 500,
+          style: {
+            fontSize: $fontSize,
+            width: $size,
+            background: 'rgba(255, 0, 0, 0.55)',
+            color: 'white',
+            border: '1px solid red',
+          },
+        }),
         setReactionsCount((prev) => ({
           ...prev,
           [likeSelected.emoji]: prev[likeSelected.emoji] - 1,
@@ -44,6 +62,16 @@ export function useReactions({
       : (setLikesQuantity(likes + 1),
         setIsLike(true),
         setLikeSelected(reactions[0]),
+        toast.info('Me gusta agregado.', {
+          duration: 500,
+          style: {
+            fontSize: $fontSize,
+            width: $size,
+            background: 'rgba(35, 116, 225, 0.55)',
+            color: 'white',
+            border: '1px solid blue',
+          },
+        }),
         setReactionsCount((prev) => ({
           ...prev,
           ['👍']: prev['👍'] + 1,
@@ -62,6 +90,17 @@ export function useReactions({
 
     likeSelected !== null
       ? (setLikeSelected(reaction),
+        toast('Me gusta cambiado.', {
+          duration: 500,
+          icon: `${reaction.emoji}`,
+          style: {
+            fontSize: $fontSize,
+            width: $size,
+            background: $backgroundColor,
+            color: $color,
+            border: $borderColor,
+          },
+        }),
         setReactionsCount((prev) => ({
           ...prev,
           [likeSelected.emoji]: prev[likeSelected.emoji] - 1,
@@ -70,6 +109,17 @@ export function useReactions({
       : (setLikesQuantity(likes + 1),
         setIsLike(true),
         setLikeSelected(reaction),
+        toast('Me gusta agregado.', {
+          duration: 500,
+          icon: `${reaction.emoji}`,
+          style: {
+            fontSize: $fontSize,
+            width: $size,
+            background: $backgroundColor,
+            color: $color,
+            border: $borderColor,
+          },
+        }),
         setReactionsCount((prev) => ({
           ...prev,
           [reaction.emoji]: (prev[reaction.emoji] || 0) + 1,
@@ -138,6 +188,7 @@ export function useReactions({
 
   const cardColor = isDark ? '#252728' : '#fff';
   const cardTheme = isDark ? '' : 'feedCard-color-light';
+  const underlineTheme = isDark ? '' : 'light-theme';
   const footerTheme = isDark ? '' : 'actions-hover-color-light';
   const actionButtonsColor = isDark ? '#b0b3b8' : '#65686c';
 
@@ -161,6 +212,7 @@ export function useReactions({
       footerTheme,
       buttonLikeColor,
       actionButtonsColor,
+      underlineTheme,
     },
     displayTexts: {
       likesText,

@@ -1,12 +1,19 @@
+:root {
+  --dark-bg: #252728;
+  --dark-gray-bg: #65686c;
+  --dark-gray-txt: #b0b3b8;
+  --dark-hvr: #3b3d3e; 
+  --light-hvr: #c5c6c7;
+}
+
 .fb-feedCard {
-  background: #252728;
+  background: var(--dark-bg);
   border-radius: 10px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   margin: 5px;
   max-width: 700px;
   font-family: 'San Francisco', Helvetica;
-  color: #050505;
-  transition: all 0.5s ease;
+  transition: all 1.5s ease;
 }
 
 .btn-theme {
@@ -37,7 +44,7 @@
 
 .btn-theme-light {
   color: yellow;
-  background: #252728;
+  background: var(--dark-bg);
   box-shadow: black 4px 4px 12px;
 }
 
@@ -69,6 +76,7 @@
 .fb-feedCard-info strong {
   font-size: 16px;
   color: #fff;
+  transition: all 1.5s ease;
 }
 
 .feedCard-color-light .fb-feedCard-info strong {
@@ -78,7 +86,8 @@
 .fb-feedCard-info span {
   font-size: 12px;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #b0b3b8;
+  color: var(--dark-gray-txt);
+  transition: all 1.5s ease;
 }
 
 .fb-feedCard-subInfo {
@@ -86,12 +95,12 @@
   align-items: center;
   gap: 6px;
   font-size: 12px;
-  color: #b0b3b8;
+  color: var(--dark-gray-txt);
   margin-top: 2px;
 }
 
 .feedCard-color-light .fb-feedCard-subInfo span {
-  color: #65686c;
+  color: var(--dark-gray-bg);
 }
 
 .fb-feedCard-content {
@@ -109,7 +118,7 @@
 }
 
 .feedCard-color-light .fb-feedCard-footer span {
-  color: #65686c;
+  color: var(--dark-gray-bg);
 }
 
 .fb-feedCard-footer-likes-comments-container {
@@ -126,7 +135,7 @@
   margin-bottom: 8px;
   font-size: 16px;
   padding: 0 20px;
-  color: #b0b3b8;
+  color: var(--dark-gray-txt);
 }
 
 .reaction-group {
@@ -145,7 +154,7 @@
   align-items: center;
   margin-left: -5.5px;
   transition: transform 0.18s cubic-bezier(0.4, 2.3, 0.3, 1),
-    background 0.5s ease, border-color 0.5s;
+    background 1.5s ease, border-color 1.5s;
   position: relative;
   user-select: none;
 }
@@ -234,6 +243,10 @@
   transition: transform 0.3s ease;
 }
 
+.fb-feedCard-footer-likes-underline.light-theme::after {
+  background-color: var(--dark-gray-bg);
+}
+
 .fb-feedCard-footer-likes-quantity:hover
   .fb-feedCard-footer-likes-underline::after {
   transform: scaleX(1);
@@ -270,7 +283,7 @@
   border: none;
   height: 1px;
   width: 95%;
-  background-color: #65686c;
+  background-color: var(--dark-gray-bg);
   margin: 0 auto 8px auto;
 }
 
@@ -298,7 +311,7 @@
   cursor: pointer;
   font-size: 16px;
   padding: 8px 12px;
-  color: #b0b3b8;
+  color: var(--dark-gray-txt);
   flex: 1;
   text-align: center;
   border-radius: 5px;
@@ -307,11 +320,11 @@
 }
 
 .fb-feedCard-footer-actions > span:hover {
-  background: #3b3d3e;
+  background: var(--dark-hvr);
 }
 
 .actions-hover-color-light > span:hover {
-  background: #c5c6c7;
+  background: var(--light-hvr);
 }
 
 .fb-feedCard-footer-actions .buttons-text {
