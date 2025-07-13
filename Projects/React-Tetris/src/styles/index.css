@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+  background: #1c1c1d;
+  color: #fff;
+  font-family: system-ui;
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+  transition: background 0.5s ease;
+  -webkit-transition: background 0.5s ease;
+  -moz-transition: background 0.5s ease;
+  -ms-transition: background 0.5s ease;
+  -o-transition: background 0.5s ease;
+}
+
+::-webkit-scrollbar{
+  width: 0.57vh;
+  height: 1.14vh;
+}
+
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: gray;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1e76ff;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}

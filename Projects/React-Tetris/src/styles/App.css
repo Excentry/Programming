@@ -1,0 +1,69 @@
+.text-rainbow {
+  left: 50%;
+  top: 0px;
+  padding: 0;
+  margin: 0;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  font-size: 4rem;
+  font-weight: bold;
+  background: linear-gradient(
+    270deg,
+    #ff0000,
+    #ffa500,
+    #ffff00,
+    #00ff00,
+    #0000ff,
+    #4b0082,
+    #ee82ee,
+    #ff0000
+  );
+  background-size: 400% 400%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbow 5s linear infinite, move-text 1s forwards;
+}
+
+@keyframes move-text {
+  0% {
+    transform: translateX(-100vh);
+}
+  100% {
+    transform: translateX(-50%);
+}
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.board {
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  display: inline-block;
+  border: 2px solid #333;
+  background-color: #000;
+  width: 270px;
+  margin-bottom: 20px;
+}
+
+.row {
+  display: flex;
+}
+
+.cell {
+  width: 27px;
+  height: 27px;
+  border: 1px solid #333;
+}
