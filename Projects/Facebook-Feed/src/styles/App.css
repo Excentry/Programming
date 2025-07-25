@@ -239,7 +239,7 @@
   bottom: 1.2px;
   left: 0;
   background-color: rgba(255, 255, 255, 0.7);
-  transform-origin: buttom center;
+  transform-origin: bottom center;
   transition: transform 0.3s ease;
 }
 
@@ -250,7 +250,7 @@
 .fb-feedCard-footer-likes-quantity:hover
   .fb-feedCard-footer-likes-underline::after {
   transform: scaleX(1);
-  transform-origin: buttom center;
+  transform-origin: bottom center;
 }
 
 .fb-feedCard-footer-likes-quantity span {
