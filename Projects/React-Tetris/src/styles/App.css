@@ -484,13 +484,6 @@ button:active {
   to { opacity: 1; transform: scale(1); }
 }
 
-@media (width < 600px) {
-  .text-rainbow {
-    display: none;
-  }
-}
-
-/* Ajustes para pantallas de tablets y móviles */
 @media (max-width: 1024px) {
   .text-rainbow {
     font-size: 3rem;
