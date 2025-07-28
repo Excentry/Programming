@@ -197,6 +197,13 @@
   gap: 5vh;
 }
 
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
 .menu-box {
   background: #1a1a1a;
   padding: 6rem 6rem 4rem 6rem;
@@ -501,13 +508,9 @@ button:active {
 }
 
 @media (max-width: 600px) {
-  body {
+  .menu {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 10px;
-  }    
+  }
 
   .menu-box {
     padding: 3rem 3rem 1rem 3rem;
@@ -530,55 +533,52 @@ button:active {
     margin-bottom: 1rem;
   }
 
-  .tetris-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-
-  .board {
-    transform: none;
-    position: static;
-    margin: 0 auto;
-    scale: 0.9;
-  }
-
-  .next-preview,
   .score {
-    width: 100%;
-    max-width: 300px;
-    position: static;
     display: flex;
-    justify-content: center;
-    margin: 1rem auto;
+    top: 14rem;
+    right: 3rem;
   }
 
   .next-preview {
-    height: auto;
-    padding: 10px;
-    flex-direction: column;
+    position: absolute;
+    margin: 0 auto;
+    scale: 0.8;
+    top: 3.6rem;
+    right: 1rem;
   }
 
+  .tetris-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+  .board {
+    transform: none;
+    scale: 0.8;
+}
+
   .arrow-keys {
-    position: fixed;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: row;
-    gap: 8px;
+    position: absolute;
+    bottom: 30px;
   }
 
   .key {
-    width: 50px;
-    height: 50px;
-    font-size: 1.2rem;
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
   }
 
   .pause-button {
-    width: 6rem;
-    height: 2.5rem;
-    font-size: 1rem;
+    height: 2.6rem;
+    font-size: 1.2rem;
+  }
+
+  .pause-overlay, .reset-content, .game-over {
+    width: 90vw;
+  }
+
+  .pause-overlay p {
+    display: none;
   }
 }
