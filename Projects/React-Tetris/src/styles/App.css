@@ -509,8 +509,20 @@ button:active {
     padding: 10px;
   }    
 
+  .menu-box {
+    padding: 3rem 3rem 1rem 3rem;
+  }
+
   .menu-title {
     font-size: 2.5rem;
+  }
+
+  .menu-subtitle {
+    font-size: 1rem;
+  }
+
+  .start-button {
+    scale: 0.8;
   }
 
   .text-rainbow {
