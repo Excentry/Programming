@@ -143,6 +143,8 @@ export function Tetris({ started, setStarted }) {
   }, [gameOver, score, lines, isPaused, isRestart]);
 
   useEffect(() => {
+    if (gameOver) return;
+
     if (position.x < -1) {
       setPosition((prevPosition) => ({
         ...prevPosition,
@@ -167,7 +169,7 @@ export function Tetris({ started, setStarted }) {
     }
 
     setPrevX(position.x);
-  }, [position.x]);
+  }, [position.x, gameOver]);
 
   function checkCollision(shape, pos, board) {
     for (let y = 0; y < shape.length; y++) {
@@ -243,6 +245,8 @@ export function Tetris({ started, setStarted }) {
   }, [gameOver]);
 
   useEffect(() => {
+    if (gameOver) return;
+
     const shouldSolidify = piece.shape.some((rowPiece, dy) =>
       rowPiece.some((value, dx) => {
         if (!value) return false;
@@ -291,7 +295,7 @@ export function Tetris({ started, setStarted }) {
         setNextPiece(getRandomPiece());
       }
     }
-  }, [position.y]);
+  }, [position.y, gameOver]);
 
   const movePiece = (dx, dy) => {
     setPosition((prevPosition) => ({
