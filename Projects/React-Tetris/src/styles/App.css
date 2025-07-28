@@ -539,25 +539,26 @@ button:active {
   .next-preview {
     position: absolute;
     margin: 0 auto;
-    scale: 0.8;
-    top: 8dvh;
+    scale: 0.85;
+    top: 7vh;
     right: 0;
   }
 
   .tetris-container {
     position: absolute;
-    top: 0;
-    left: -10px;
+    top: 5px;
+    left: -12px;
   }
 
   .board {
     transform: none;
-    scale: 0.8;
+    scale: 0.85;
   }
 
   .arrow-keys {
     position: absolute;
     bottom: 10px;
+    left: 15vw;
   }
 
   .key {
