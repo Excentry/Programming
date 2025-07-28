@@ -30,6 +30,7 @@
   -webkit-text-fill-color: transparent;
   animation: rainbow 5s linear infinite, move-text 0.8s ease-out forwards;
   letter-spacing: 2px;
+  user-select: none;
 }
 
 @keyframes move-text {
@@ -122,6 +123,7 @@
   letter-spacing: 1px;
   color: #fff;
   text-shadow: 0 0 15px #fff;
+  user-select: none;
 }
 
 .next-piece {
@@ -154,6 +156,7 @@
   top: 11.5rem;
   font-family: 'Orbitron', sans-serif;
   text-shadow: 0 0 5px #0ff;
+  user-select: none;
 }
 
 .type-1 {
@@ -195,6 +198,7 @@
   display: flex;
   flex-direction: column;
   gap: 5vh;
+  user-select: none;
 }
 
 .menu {
@@ -202,6 +206,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+  user-select: none;
 }
 
 .menu-box {
@@ -322,6 +327,7 @@
   gap: 2vh;
   display: flex;
   flex-direction: column;
+  user-select: none;
 }
 
 @keyframes fadeIn {
@@ -395,6 +401,7 @@ button {
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  user-select: none;
 }
 
 button:hover {
@@ -434,6 +441,7 @@ button:active {
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
+  user-select: none;
 }
 
 .key:hover {
@@ -470,6 +478,7 @@ button:active {
   z-index: 10;
   display: flex;
   flex-direction: column;
+  user-select: none;
 }
 
 .reset-buttons {
