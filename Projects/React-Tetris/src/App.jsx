@@ -9,7 +9,7 @@ export function App() {
     <section className='App'>
       {started && <RainbowText>React Tetris</RainbowText>}
 
-      <Tetris started={started} setStarted={setStarted}/>
+      <Tetris started={started} setStarted={setStarted} />
     </section>
   );
 }
