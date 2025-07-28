@@ -527,13 +527,12 @@ button:active {
 
   .text-rainbow {
     font-size: 2.5rem;
-    top: 5dvh;
     margin-bottom: 1rem;
   }
 
   .score {
     display: flex;
-    top: 35dvh;
+    top: 30dvh;
     right: 2rem;
   }
 
@@ -541,13 +540,13 @@ button:active {
     position: absolute;
     margin: 0 auto;
     scale: 0.8;
-    top: 12dvh;
+    top: 8dvh;
     right: 0;
   }
 
   .tetris-container {
     position: absolute;
-    top: 3.8dvh;
+    top: 0;
     left: -10px;
   }
 
@@ -562,16 +561,17 @@ button:active {
   }
 
   .key {
-    width: 60px;
-    height: 60px;
-    font-size: 1.5rem;
+    width: 80px;
+    height: 80px;
+    font-size: 3rem;
+    line-height: 80px;
   }
 
   .pause-button {
-    width: 6rem;
     height: 2.6rem;
     font-size: 1.2rem;
-    top: 7dvh;
+    top: 1.5dvh;
+    right: 5px;
   }
 
   .pause-overlay,
