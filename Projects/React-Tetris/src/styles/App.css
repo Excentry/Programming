@@ -484,40 +484,9 @@ button:active {
   to { opacity: 1; transform: scale(1); }
 }
 
-@media (max-width: 1024px) {
-  .text-rainbow {
-    font-size: 3rem;
-    text-align: center;
-    width: 100%;
-    left: 0;
-  }
 
-  .board {
-    transform: translateX(-50%) scale(0.9);
-  }
 
-  .next-preview,
-  .score {
-    position: static;
-    margin: 10px auto;
-    text-align: center;
-  }
-
-  .next-preview {
-    width: 8rem;
-    height: 8rem;
-  }
-
-  .next-preview span {
-    font-size: 1rem;
-  }
-
-  .score {
-    font-size: 1.2rem;
-  }
-}
-
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   body {
     display: flex;
     flex-direction: column;
@@ -580,32 +549,6 @@ button:active {
   .pause-button {
     width: 6rem;
     height: 2.5rem;
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .text-rainbow {
-    font-size: 2rem;
-    letter-spacing: 1px;
-  }
-
-  .board {
-    scale: 0.8;
-  }
-
-  .next-preview {
-    width: 7rem;
-    height: 7rem;
-  }
-
-  .score {
-    font-size: 1rem;
-  }
-
-  .key {
-    width: 45px;
-    height: 45px;
     font-size: 1rem;
   }
 }
