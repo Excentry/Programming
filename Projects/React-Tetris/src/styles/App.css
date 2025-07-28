@@ -537,7 +537,7 @@ button:active {
   .text-rainbow {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    top: 0.5vh;
+    top: 1vh;
   }
 
   .score {
@@ -556,7 +556,7 @@ button:active {
 
   .tetris-container {
     position: absolute;
-    top: 10px;
+    top: 12px;
     left: -12px;
   }
 
