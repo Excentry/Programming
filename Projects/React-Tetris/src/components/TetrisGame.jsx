@@ -208,6 +208,8 @@ export function Tetris({ started, setStarted }) {
   }
 
   const handleMove = (key) => {
+    if (gameOver) return;
+
     if (KEYS.reset.includes(key)) {
       confirmRestart();
       return;
@@ -288,6 +290,7 @@ export function Tetris({ started, setStarted }) {
       const newPos = { x: getInitialX(newPiece.shape), y: 0 };
       if (checkCollision(newPiece.shape, newPos, board)) {
         setGameOver(true);
+        stopPressingDown();
       } else {
         setPiece(newPiece);
         setPosition(newPos);
