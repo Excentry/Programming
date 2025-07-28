@@ -413,6 +413,7 @@ button:active {
   height: 7vh;
   color: white;
   text-align: center;
+  line-height: 7vh;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -486,5 +487,132 @@ button:active {
 @media (width < 600px) {
   .text-rainbow {
     display: none;
+  }
+}
+
+/* Ajustes para pantallas de tablets y móviles */
+@media (max-width: 1024px) {
+  .text-rainbow {
+    font-size: 3rem;
+    text-align: center;
+    width: 100%;
+    left: 0;
+  }
+
+  .board {
+    transform: translateX(-50%) scale(0.9);
+  }
+
+  .next-preview,
+  .score {
+    position: static;
+    margin: 10px auto;
+    text-align: center;
+  }
+
+  .next-preview {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  .next-preview span {
+    font-size: 1rem;
+  }
+
+  .score {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+  }
+
+  .text-rainbow {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .tetris-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .board {
+    transform: none;
+    position: static;
+    margin: 0 auto;
+    scale: 0.9;
+  }
+
+  .next-preview,
+  .score {
+    width: 100%;
+    max-width: 300px;
+    position: static;
+    display: flex;
+    justify-content: center;
+    margin: 1rem auto;
+  }
+
+  .next-preview {
+    height: auto;
+    padding: 10px;
+    flex-direction: column;
+  }
+
+  .arrow-keys {
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .key {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+
+  .pause-button {
+    width: 6rem;
+    height: 2.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .text-rainbow {
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+
+  .board {
+    scale: 0.8;
+  }
+
+  .next-preview {
+    width: 7rem;
+    height: 7rem;
+  }
+
+  .score {
+    font-size: 1rem;
+  }
+
+  .key {
+    width: 45px;
+    height: 45px;
+    font-size: 1rem;
   }
 }
