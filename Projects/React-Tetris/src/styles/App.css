@@ -582,7 +582,7 @@ button:active {
     height: 2.6rem;
     font-size: 1.2rem;
     top: 1.5dvh;
-    right: 5px;
+    right: 1vh;
   }
 
   .pause-overlay,
