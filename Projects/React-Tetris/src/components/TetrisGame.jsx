@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { getStorageMusic, saveMusic } from '../logic/storage/MusicPlay';
-import { FaArrowUp, FaArrowLeft, FaArrowDown, FaArrowRight } from 'react-icons/fa';
+import { FaArrowRotateRight } from 'react-icons/fa6';
+import { FaArrowLeft, FaArrowDown, FaArrowRight, FaPause, FaPlay } from 'react-icons/fa';
 
 export function Tetris({ started, setStarted }) {
   const audioRef = useRef(null);
@@ -424,7 +425,7 @@ export function Tetris({ started, setStarted }) {
     <section>
       {!gameOver && !isRestart && (
         <button className='pause-button' onClick={() => togglePause()}>
-          {isPaused ? 'Continuar' : 'Pausa'}
+          {isPaused ? <FaPlay /> : <FaPause />}
         </button>
       )}
 
@@ -467,7 +468,7 @@ export function Tetris({ started, setStarted }) {
 
       <div className={`arrow-keys ${showBoard ? 'fade-in-up' : ''}`}>
         <span className='key' onClick={() => handleMove('ArrowUp')}>
-          <FaArrowUp />
+          <FaArrowRotateRight />
         </span>
         <div className='middle-row'>
           <span className='key' onClick={() => handleMove('ArrowLeft')}>
