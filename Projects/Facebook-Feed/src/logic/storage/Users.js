@@ -2,7 +2,7 @@ import {
   getRandomDateFormatted,
   getRandomImage,
   getRandomReactions,
-} from '../funtions/RandomFuntions.js';
+} from '../functions/RandomFunctions.js';
 import { generatePostId } from './PostId.js';
 
 export const users = (() => {
