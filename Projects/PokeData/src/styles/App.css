@@ -21,7 +21,7 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 600;
-  background-image: url(favicon.ico);
+  background-image: url(../../public/pokeball_logo.png);
   background-size: 30px 30px;
   background-repeat: no-repeat;
   background-position: center left 12px;
