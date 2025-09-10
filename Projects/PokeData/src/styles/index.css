@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #252728;
+  color: #fff;
+  font-family: system-ui;
+  display: grid;
+}
+
+::-webkit-scrollbar {
+  width: 2vh;
+}
+
+::-webkit-scrollbar-thumb {
+  background: gray;
+  border-radius: 50px;
+  border: 0.5vh solid #252728;
+}
+
+.App {
+  height: 100%;
+}
