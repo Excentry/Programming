@@ -217,11 +217,6 @@
   transform-origin: bottom left;
 }
 
-/* Texto para volver al welcome page, es temportal. */
-.tmp {
-  position: absolute;
-}
-
 .not-pokemons-found-container {
   display: flex;
   flex-direction: column;
