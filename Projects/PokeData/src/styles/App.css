@@ -113,7 +113,7 @@
   align-items: center;
   position: relative;
   overflow: hidden;
-  background-image: url(welcome-background.jpg);
+  background-image: url(../../public/welcome-background.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
