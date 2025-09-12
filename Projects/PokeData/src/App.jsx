@@ -36,21 +36,11 @@ export function App() {
             ) : showWelcomePage ? (
               <WelcomePage toggleWelcomePage={toggleWelcomePage} />
             ) : (
-              <section>
-                {!showWelcomePage && !loading && (
-                  <span
-                    onClick={toggleWelcomePage}
-                    className='continue-text tmp'
-                  >
-                    Cambiar al welcome Page
-                  </span>
-                )}
-                <PokemonContainer
-                  pokemons={pokemons}
-                  search={search}
-                  setSearch={setSearch}
-                />
-              </section>
+              <PokemonContainer
+                pokemons={pokemons}
+                search={search}
+                setSearch={setSearch}
+              />
             )
           }
         />
