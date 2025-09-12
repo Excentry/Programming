@@ -31,10 +31,10 @@ export function App() {
         <Route
           path='/'
           element={
-            loading ? (
-              <div className='loader'></div>
-            ) : showWelcomePage ? (
+            showWelcomePage ? (
               <WelcomePage toggleWelcomePage={toggleWelcomePage} />
+            ) : loading ? (
+              <div className='loader'></div>
             ) : (
               <PokemonContainer
                 pokemons={pokemons}
