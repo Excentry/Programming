@@ -47,6 +47,7 @@ export function PokemonCard({ pokemons, search }) {
                   type='image/png'
                   loading='lazy'
                   style={{ background: nameColor }}
+                  className='pokemon-card-image'
                 />
                 <h1 className='pokemon-card-name'>{nombre}</h1>
                 <h2 className='pokemon-card-info'>Ratio de captura: </h2>
