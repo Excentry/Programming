@@ -11,7 +11,7 @@ import {
   MovementColor,
 } from '../logic/colors'
 
-export function useInfoColor(
+export function useInfoColor({
   ratio,
   hability,
   type,
@@ -22,7 +22,7 @@ export function useInfoColor(
   generation,
   evolution,
   movement
-) {
+}) {
   const ratioClass =
     ratio < 45
       ? 'bajo'

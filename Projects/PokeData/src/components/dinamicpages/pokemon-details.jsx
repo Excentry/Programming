@@ -37,18 +37,18 @@ export function PokemonDetails() {
     generationColor,
     evolutionColor,
     movementColor,
-  } = useInfoColor(
-    ratio_captura,
-    habilidad,
-    tipo,
-    categoria,
-    habitat,
-    nombre,
-    region,
-    generacion,
-    tipo_evolucion,
-    movimientos
-  )
+  } = useInfoColor({
+    ratio: ratio_captura,
+    hability: habilidad,
+    type: tipo,
+    category: categoria,
+    habitat: habitat,
+    name: nombre,
+    region: region,
+    generation: generacion,
+    evolution: tipo_evolucion,
+    movement: movimientos,
+  })
 
   const lightGray = '#8f8f8fff'
 
