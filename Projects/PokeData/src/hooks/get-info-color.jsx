@@ -66,7 +66,11 @@ export function useInfoColor(
   const movementColor = movement
     ? movement
         .split(',')
-        .map(move => MovementColor[move.trim().toLowerCase().replace(/ /g, '_')] || '#000000')
+        .map(
+          move =>
+            MovementColor[move.trim().toLowerCase().replace(/ /g, '_')] ||
+            '#000000'
+        )
     : []
 
   return {

@@ -4,7 +4,7 @@ export function PokemonContainer({ pokemons, search, setSearch }) {
   return (
     <section className='container'>
       <PokemonSearch search={search} setSearch={setSearch} />
-      <PokemonCard pokemons={pokemons} search={search}/>
+      <PokemonCard pokemons={pokemons} search={search} />
     </section>
   )
 }

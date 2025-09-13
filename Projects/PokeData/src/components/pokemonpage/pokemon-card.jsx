@@ -17,8 +17,20 @@ export function PokemonCard({ pokemons, search }) {
             tipos: tipo,
           } = poke
 
-          const { ratioColor, habilityColor, typeColor, categoryColor, nameColor } =
-            useInfoColor(ratio_captura, habilidad, tipo, categoria, null, nombre)
+          const {
+            ratioColor,
+            habilityColor,
+            typeColor,
+            categoryColor,
+            nameColor,
+          } = useInfoColor(
+            ratio_captura,
+            habilidad,
+            tipo,
+            categoria,
+            null,
+            nombre
+          )
 
           const PokeName = nombre.toLowerCase().trim()
 
