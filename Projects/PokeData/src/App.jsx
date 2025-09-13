@@ -8,7 +8,7 @@ import { WelcomePage } from './components/welcomepage/welcome-page'
 import { PokemonContainer } from './components/pokemonpage/pokemon-container'
 import { useWelcomePageState } from './hooks/welcome-page-state'
 import { useFetchPokemons } from './hooks/fetch-pokemons'
-import { PokemonDetails } from './components/page/pokemon-details'
+import { PokemonDetails } from './components/dinamicpages/pokemon-details'
 
 export function App() {
   const [showWelcomePage, setWelcomePage] = useState(getShowWelcomePage)

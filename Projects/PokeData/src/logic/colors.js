@@ -1,7 +1,9 @@
 export const RatioColor = {
-  bajo: '#F87171',
-  medio: '#FBBF24',
-  alto: '#34D399',
+  bajo: '#f95050ff',
+  medio_bajo: '#fa7f7fff',
+  medio: '#ffd365ff',
+  medio_alto: '#f3ff0aff',
+  alto: '#28fbaeff',
 }
 
 export const HabilityColor = {
@@ -148,4 +150,86 @@ export const CategoryColor = {
   dormir: '#A3A3A3',
   congelacion: '#67E8F9',
   genetico: '#22C55E',
+}
+
+export const NameColor = {
+  bulbasaur: '#78C850',
+  ivysaur: '#78C850',
+  venusaur: '#78C850',
+  charmander: '#F08030',
+  charmeleon: '#F08030',
+  charizard: '#F08030',
+  squirtle: '#6890F0',
+  wartortle: '#6890F0',
+  blastoise: '#6890F0',
+  caterpie: '#A8B820',
+  metapod: '#A8B820',
+  butterfree: '#A8B820',
+  weedle: '#A8B820',
+  kakuna: '#A8B820',
+  beedrill: '#A8B820',
+  pidgey: '#A890F0',
+  pidgeotto: '#A890F0',
+  pidgeot: '#A890F0',
+  rattata: '#A8A878',
+  raticate: '#A8A878',
+  spearow: '#A890F0',
+  fearow: '#A890F0',
+  ekans: '#A040A0',
+  arbok: '#A040A0',
+  pikachu: '#F8D030',
+}
+
+export const HabitatColor = {
+  bosque: '#16A34A',
+  pradera: '#4ADE80',
+  cueva: '#6B7280',
+  montaña: '#9CA3AF',
+  ciudad: '#FBBF24',
+  campo: '#A3E635',
+  mar: '#3B82F6',
+  oceano: '#2563EB',
+  rio: '#60A5FA',
+  pantano: '#4B5563',
+  desierto: '#F59E0B',
+  nieve: '#93C5FD',
+}
+
+export const RegionColor = {
+  kanto: '#EF4444',
+  johto: '#F59E0B',
+  hoenn: '#10B981',
+  sinnoh: '#3B82F6',
+  teselia: '#8B5CF6',
+  kalos: '#EC4899',
+  alola: '#F97316',
+  galar: '#6366F1',
+  paldea: '#22D3EE',
+}
+
+export const GenerationColor = {
+  gen1: '#FF0000',
+  gen2: '#FF7F00',
+  gen3: '#FFFF00',
+  gen4: '#00FF00',
+  gen5: '#00FFFF',
+  gen6: '#0000FF',
+  gen7: '#8B00FF',
+  gen8: '#FF1493',
+  gen9: '#00CED1',
+}
+
+export const EvolutionColor = {
+  primera: '#A0A0A0',
+  segunda: '#E74C3C',
+  mega: '#FFD700',
+  gigamax: '#6A5ACD',
+}
+
+export const MovementColor = {
+  placaje: '#135cefff',
+  gruñido: '#F59E0B',
+  latigo_cepa: '#34D399',
+  ascuas: '#F87171',
+  pistola_agua: '#3B82F6',
 }

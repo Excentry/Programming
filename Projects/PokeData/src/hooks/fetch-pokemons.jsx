@@ -36,7 +36,7 @@ export function useFetchCardPokemon(pokemonName, setPokemon) {
     async function fetchCardPokemon() {
       try {
         const { data, error } = await supabase
-          .from('pokemons')
+          .from('pokemon_info')
           .select('*')
           .ilike('nom_pokemon', `${pokemonName}%`)
           .single()
@@ -53,5 +53,5 @@ export function useFetchCardPokemon(pokemonName, setPokemon) {
     }
 
     fetchCardPokemon()
-  }, [pokemonName])
+  }, [pokemonName, setPokemon])
 }

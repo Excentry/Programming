@@ -13,13 +13,12 @@ export function PokemonCard({ pokemons, search }) {
             nom_pokemon: nombre,
             ratio_captura,
             categoria,
-            generacion,
             habilidad,
             tipos: tipo,
           } = poke
 
-          const { ratioColor, habilityColor, typeColor, categoryColor } =
-            useInfoColor(ratio_captura, habilidad, tipo, categoria)
+          const { ratioColor, habilityColor, typeColor, categoryColor, nameColor } =
+            useInfoColor(ratio_captura, habilidad, tipo, categoria, null, nombre)
 
           const PokeName = nombre.toLowerCase().trim()
 
@@ -35,7 +34,7 @@ export function PokemonCard({ pokemons, search }) {
                   alt={nombre}
                   type='image/png'
                   loading='lazy'
-                  style={{ background: categoryColor }}
+                  style={{ background: nameColor }}
                 />
                 <h1 className='pokemon-card-name'>{nombre}</h1>
                 <h2 className='pokemon-card-info'>Ratio de captura: </h2>
