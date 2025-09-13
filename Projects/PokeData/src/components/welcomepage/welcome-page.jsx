@@ -1,7 +1,7 @@
 export function WelcomePage({ toggleWelcomePage }) {
   return (
     <div className='welcome-page'>
-      <img src='src/images/pokedex.png' alt='pokedex-image' className='pokedex-image' />
+      <img src='pokedex.png' alt='pokedex-image' className='pokedex-image' />
       <div className='welcome-message'>
         <div className='bubble'>
           <h1 className='welcome-title'>BIENVENIDO A POKEDATA</h1>
