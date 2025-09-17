@@ -1,3 +1,3 @@
-export * from './pokemon'
-export * from './color-info'
-export * from './welcome'
+export * from './color-props'
+export * from './welcome-props'
+export * from './pokemon-props'
