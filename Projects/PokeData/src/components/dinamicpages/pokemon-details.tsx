@@ -5,19 +5,22 @@ import { FaArrowAltCircleLeft } from 'react-icons/fa'
 import { useFetchCardPokemon } from '../../hooks/fetch-pokemons'
 import { useInfoColor } from '../../hooks/get-info-color'
 import { getContrastYIQ } from '../../logic/functions/get-contrast-color'
+import type { Pokemon } from '../../types'
 
 export function PokemonDetails() {
   const { nombre } = useParams()
-  const [pokemon, setPokemon] = useState({})
+  const [pokemon, setPokemon] = useState<Pokemon | null>(null)
 
-  useFetchCardPokemon(nombre, setPokemon)
+  useFetchCardPokemon(nombre!, setPokemon)
+
+  if (!pokemon) return null
 
   const {
     id_pokemon,
     ratio_captura,
     habitat,
     habilidad,
-    generacion,
+    pok_generacion: generacion,
     tipos: tipo,
     categoria,
     evoluciones: evolucion,
@@ -68,7 +71,7 @@ export function PokemonDetails() {
         <img
           src={getPokemonImg(id_pokemon)}
           alt={nombre}
-          type='image/png'
+          data-type='image/png'
           className='pokemon-details-image'
         />
         <span
@@ -96,7 +99,7 @@ export function PokemonDetails() {
           }}
         >
           <h4 className='type-details-title title-details'>Tipo</h4>
-          {tipo?.split(',').map((type, i) => (
+          {tipo?.split(',').map((type: string, i: number) => (
             <span
               key={i}
               style={{
@@ -158,7 +161,7 @@ export function PokemonDetails() {
         >
           <h4 className='movements-details-title title-details'>Movimientos</h4>
           {movimientos ? (
-            movimientos?.split(',').map((move, i) => (
+            movimientos?.split(',').map((move: string, i: number) => (
               <span
                 key={i}
                 style={{

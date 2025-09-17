@@ -5,6 +5,6 @@ export function getShowWelcomePage() {
   return savedMenu ? JSON.parse(savedMenu) : true
 }
 
-export function saveShowWelcomePage(show) {
+export function saveShowWelcomePage(show: boolean) {
   localStorage.setItem(MENU_KEY, JSON.stringify(show))
 }

@@ -10,19 +10,21 @@ import {
   EvolutionColor,
   MovementColor,
 } from '../logic/colors'
+import { numberNotSend, stringNotSend, defaultColor } from '../logic/consts'
+import type { InfoColorProps } from '../types/color-info'
 
 export function useInfoColor({
-  ratio,
-  hability,
-  type,
-  category,
-  habitat,
-  name,
-  region,
-  generation,
-  evolution,
-  movement
-}) {
+  ratio = numberNotSend,
+  hability = stringNotSend,
+  type = stringNotSend,
+  category = stringNotSend,
+  habitat = stringNotSend,
+  name = stringNotSend,
+  region = stringNotSend,
+  generation = numberNotSend,
+  evolution = stringNotSend,
+  movement = stringNotSend,
+}: InfoColorProps) {
   const ratioClass =
     ratio < 45
       ? 'bajo'
@@ -33,35 +35,36 @@ export function useInfoColor({
       : ratio < 215
       ? 'medio_alto'
       : 'alto'
-  const ratioColor = RatioColor[ratioClass] || '#000000'
+  const ratioColor = RatioColor[ratioClass] || defaultColor
 
   const habilityColor =
     HabilityColor[hability?.toLowerCase().trim().replace(/ /g, '_')] ||
-    '#000000'
+    defaultColor
 
   const typeColor = type
     ? type
         .split(',')
-        .map(type => TypeColor[type.trim().toLowerCase()] || '#000000')
+        .map(type => TypeColor[type.trim().toLowerCase()] || defaultColor)
     : []
 
   const categoryColor =
     CategoryColor[category?.toLowerCase().trim().replace(/ /g, '_')] ||
-    '#000000'
+    defaultColor
 
   const habitatColor =
-    HabitatColor[habitat?.toLowerCase().trim().replace(/ /g, '_')] || '#000000'
+    HabitatColor[habitat?.toLowerCase().trim().replace(/ /g, '_')] ||
+    defaultColor
 
-  const nameColor = NameColor[name?.toLowerCase().trim()] || '#000000'
+  const nameColor = NameColor[name?.toLowerCase().trim()] || defaultColor
 
   const regionColor =
-    RegionColor[region?.toLowerCase().trim().replace(/ /g, '_')] || '#000000'
+    RegionColor[region?.toLowerCase().trim().replace(/ /g, '_')] || defaultColor
 
-  const generationColor = GenerationColor['gen' + generation] || '#000000'
+  const generationColor = GenerationColor['gen' + generation] || defaultColor
 
   const evolutionColor =
     EvolutionColor[evolution?.toLowerCase().trim().replace(/ /g, '_')] ||
-    '#000000'
+    defaultColor
 
   const movementColor = movement
     ? movement
@@ -69,7 +72,7 @@ export function useInfoColor({
         .map(
           move =>
             MovementColor[move.trim().toLowerCase().replace(/ /g, '_')] ||
-            '#000000'
+            defaultColor
         )
     : []
 

@@ -1,11 +1,12 @@
 import { useEffect } from 'react'
+import type { WelcomeStateProps } from '../types'
 
 export function useWelcomePageState({
   setLoading,
   showWelcomePage,
   setWelcomePage,
   saveShowWelcomePage,
-}) {
+}: WelcomeStateProps) {
   const toggleWelcomePage = () => {
     if (showWelcomePage === true) {
       setLoading(true)

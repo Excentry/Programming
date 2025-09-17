@@ -9,11 +9,12 @@ import { PokemonContainer } from './components/pokemonpage/pokemon-container'
 import { useWelcomePageState } from './hooks/welcome-page-state'
 import { useFetchPokemons } from './hooks/fetch-pokemons'
 import { PokemonDetails } from './components/dinamicpages/pokemon-details'
+import type { Pokemon } from './types'
 
 export function App() {
   const [showWelcomePage, setWelcomePage] = useState(getShowWelcomePage)
   const [loading, setLoading] = useState(false)
-  const [pokemons, setPokemons] = useState([])
+  const [pokemons, setPokemons] = useState<Pokemon[]>([])
   const [search, setSearch] = useState('')
 
   const { toggleWelcomePage } = useWelcomePageState({

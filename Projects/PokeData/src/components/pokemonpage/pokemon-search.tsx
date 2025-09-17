@@ -1,4 +1,6 @@
-export function PokemonSearch({ search, setSearch }) {
+import type { PokemonSearchProps } from '../../types'
+
+export function PokemonSearch({ search, setSearch }: PokemonSearchProps) {
   return (
     <input
       id='search'

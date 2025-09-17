@@ -1,4 +1,5 @@
-export function WelcomePage({ toggleWelcomePage }) {
+import type { WelcomePageProps } from '../../types'
+export function WelcomePage({ toggleWelcomePage }: WelcomePageProps) {
   return (
     <div className='welcome-page'>
       <img src='pokedex.png' alt='pokedex-image' className='pokedex-image' />

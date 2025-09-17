@@ -1,4 +1,6 @@
-export const RatioColor = {
+type ColorsProps = { [key: string]: string }
+
+export const RatioColor: ColorsProps = {
   bajo: '#f95050ff',
   medio_bajo: '#fa7f7fff',
   medio: '#ffd365ff',
@@ -6,7 +8,7 @@ export const RatioColor = {
   alto: '#28fbaeff',
 }
 
-export const HabilityColor = {
+export const HabilityColor: ColorsProps = {
   espesura: '#34D399',
   mar_llamas: '#F87171',
   torrente: '#60A5FA',
@@ -37,7 +39,7 @@ export const HabilityColor = {
   guardian_tera: '#A1A1AA',
 }
 
-export const TypeColor = {
+export const TypeColor: ColorsProps = {
   acero: '#2B2B2B',
   volador: '#0082C9',
   agua: '#008FD5',
@@ -58,7 +60,7 @@ export const TypeColor = {
   siniestro: '#8B1A2B',
 }
 
-export const CategoryColor = {
+export const CategoryColor: ColorsProps = {
   semilla: '#34D399',
   lagartija: '#F87171',
   llama: '#FB923C',
@@ -152,7 +154,7 @@ export const CategoryColor = {
   genetico: '#22C55E',
 }
 
-export const NameColor = {
+export const NameColor: ColorsProps = {
   bulbasaur: '#78C850',
   ivysaur: '#78C850',
   venusaur: '#78C850',
@@ -180,7 +182,7 @@ export const NameColor = {
   pikachu: '#F8D030',
 }
 
-export const HabitatColor = {
+export const HabitatColor: ColorsProps = {
   bosque: '#16A34A',
   pradera: '#4ADE80',
   cueva: '#6B7280',
@@ -195,7 +197,7 @@ export const HabitatColor = {
   nieve: '#93C5FD',
 }
 
-export const RegionColor = {
+export const RegionColor: ColorsProps = {
   kanto: '#EF4444',
   johto: '#F59E0B',
   hoenn: '#10B981',
@@ -207,7 +209,7 @@ export const RegionColor = {
   paldea: '#22D3EE',
 }
 
-export const GenerationColor = {
+export const GenerationColor: ColorsProps = {
   gen1: '#FF0000',
   gen2: '#FF7F00',
   gen3: '#FFFF00',
@@ -219,14 +221,14 @@ export const GenerationColor = {
   gen9: '#00CED1',
 }
 
-export const EvolutionColor = {
+export const EvolutionColor: ColorsProps = {
   primera: '#A0A0A0',
   segunda: '#E74C3C',
   mega: '#FFD700',
   gigamax: '#6A5ACD',
 }
 
-export const MovementColor = {
+export const MovementColor: ColorsProps = {
   placaje: '#135cefff',
   gruñido: '#F59E0B',
   latigo_cepa: '#34D399',

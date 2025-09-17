@@ -3,7 +3,9 @@ import { useInfoColor } from '../../hooks/get-info-color'
 import { getContrastYIQ } from '../../logic/functions/get-contrast-color'
 import { getPokemonImg } from '../../logic/functions/get-pokemon-img'
 import { PokemonNotFound } from './pokemon-not-found'
-export function PokemonCard({ pokemons, search }) {
+import type { PokemonCardProps, UseInfoColorProps } from '../../types'
+
+export function PokemonCard({ pokemons, search }: PokemonCardProps) {
   return (
     <div className='card-container'>
       {pokemons.length > 0 ? (
@@ -29,7 +31,7 @@ export function PokemonCard({ pokemons, search }) {
             type: tipo,
             category: categoria,
             name: nombre,
-          })
+          } as UseInfoColorProps)
 
           const PokeName = nombre.toLowerCase().trim()
 
@@ -43,7 +45,7 @@ export function PokemonCard({ pokemons, search }) {
                 <img
                   src={getPokemonImg(id_pokemon)}
                   alt={nombre}
-                  type='image/png'
+                  date-type='image/png'
                   loading='lazy'
                   style={{ background: nameColor }}
                   className='pokemon-card-image'
@@ -71,7 +73,7 @@ export function PokemonCard({ pokemons, search }) {
                 </span>
                 <h2 className='pokemon-card-info'>Tipo: </h2>
                 <div className='type-data'>
-                  {tipo?.split(',').map((type, i) => (
+                  {tipo?.split(',').map((type: string, i: number) => (
                     <span
                       key={i}
                       className='pokemon-card-data type'

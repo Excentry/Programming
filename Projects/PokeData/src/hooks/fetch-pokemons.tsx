@@ -1,13 +1,18 @@
 import { supabase } from '../lib/supabase'
 import { useEffect } from 'react'
-export function useFetchPokemons(showWelcomePage, search, setPokemons) {
+import type { Pokemon } from '../types'
+export function useFetchPokemons(
+  showWelcomePage: boolean,
+  search: string | number,
+  setPokemons: (pokemons: Pokemon[]) => void
+) {
   useEffect(() => {
     async function fetchPokemons() {
       try {
         let query = supabase.from('pokemons').select('*')
 
         if (search) {
-          query = isNaN(search)
+          query = isNaN(search as any)
             ? query.ilike('nom_pokemon', `${search}%`)
             : query.eq('id_pokemon', search)
         }
@@ -21,7 +26,7 @@ export function useFetchPokemons(showWelcomePage, search, setPokemons) {
           return
         }
 
-        setPokemons(data)
+        setPokemons(data as Pokemon[])
       } catch (err) {
         console.error('Unexpected error fetching pokemons:', err)
       }
@@ -31,7 +36,10 @@ export function useFetchPokemons(showWelcomePage, search, setPokemons) {
   }, [showWelcomePage, search, setPokemons])
 }
 
-export function useFetchCardPokemon(pokemonName, setPokemon) {
+export function useFetchCardPokemon(
+  pokemonName: string,
+  setPokemon: (pokemon: Pokemon | null) => void
+) {
   useEffect(() => {
     async function fetchCardPokemon() {
       try {
@@ -39,7 +47,7 @@ export function useFetchCardPokemon(pokemonName, setPokemon) {
           .from('pokemon_info')
           .select('*')
           .ilike('nom_pokemon', `${pokemonName}%`)
-          .single()
+          .single<Pokemon>()
 
         if (error) {
           console.error('Error fetching card pokemon:', error)
