@@ -16,13 +16,13 @@ export function useSearchList({
 
   useEffect(() => {
     const list = listRef?.current
-    if (list) {
-      const activeItem = list.children[highlightedIndex] as HTMLElement
-      if (activeItem) {
-        activeItem.scrollIntoView({
-          block: 'nearest',
-        })
-      }
+    if (!list) return
+
+    const activeItem = list.children[highlightedIndex] as HTMLElement
+    if (activeItem) {
+      activeItem.scrollIntoView({
+        block: 'nearest',
+      })
     }
   }, [highlightedIndex])
 
