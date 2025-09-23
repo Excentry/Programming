@@ -31,4 +31,5 @@ export type PokemonNotFoundProps = {
 export type PokemonSearchProps = {
   search: string
   setSearch: React.Dispatch<React.SetStateAction<string>>
+  Pokemons: Pokemon[]
 }
