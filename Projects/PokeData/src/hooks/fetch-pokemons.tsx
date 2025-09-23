@@ -1,15 +1,20 @@
 import { supabase } from '@lib/supabase'
 import { useEffect } from 'react'
-import type { Pokemon } from '@types'
-export function useFetchPokemons(
-  showWelcomePage: boolean,
-  search: string | number,
-  setPokemons: (pokemons: Pokemon[]) => void
-) {
+import type { Pokemon, PokemonFetchProps } from '@types'
+export function useFetchPokemons({
+  showWelcomePage,
+  search,
+  limit,
+  offset,
+  setPokemons,
+}: PokemonFetchProps) {
   useEffect(() => {
     async function fetchPokemons() {
       try {
-        let query = supabase.from('pokemons').select('*')
+        let query = supabase
+          .from('pokemons')
+          .select('*')
+          .range(offset, offset + limit - 1)
 
         if (search) {
           query = isNaN(search as any)
@@ -26,14 +31,14 @@ export function useFetchPokemons(
           return
         }
 
-        setPokemons(data as Pokemon[])
+        setPokemons(prev => [...prev, ...(data as Pokemon[])])
       } catch (err) {
         console.error('Unexpected error fetching pokemons:', err)
       }
     }
 
     fetchPokemons()
-  }, [showWelcomePage, search, setPokemons])
+  }, [showWelcomePage, search, limit, offset, setPokemons])
 }
 
 export function useFetchCardPokemon(

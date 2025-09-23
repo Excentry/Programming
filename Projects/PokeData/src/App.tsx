@@ -9,6 +9,7 @@ import { PokemonContainer } from '@components/pokemonpage/pokemon-container'
 import { useWelcomePageState } from '@hooks/welcome-page-state'
 import { useFetchPokemons } from '@hooks/fetch-pokemons'
 import { PokemonDetails } from '@components/dinamicpages/pokemon-details'
+import { ChargeMore } from '@components/pokemonpage/charge-more'
 import type { Pokemon } from '@types'
 
 export function App() {
@@ -19,6 +20,8 @@ export function App() {
   const [isFocused, setIsFocused] = useState(false)
   const [highlightedIndex, setHighlightedIndex] = useState(0)
   const listRef = useRef<HTMLUListElement>(null)
+  const [offset, setOffset] = useState(0)
+  const limit = 9
 
   const { toggleWelcomePage } = useWelcomePageState({
     setLoading,
@@ -27,7 +30,13 @@ export function App() {
     saveShowWelcomePage,
   })
 
-  useFetchPokemons(showWelcomePage, search, setPokemons)
+  useFetchPokemons({ showWelcomePage, search, limit, offset, setPokemons })
+
+  const handleLoadMore = () => {
+    if (pokemons.length % limit !== 0) return
+
+    setOffset(prev => prev + limit)
+  }
 
   return (
     <section className='App'>
@@ -40,16 +49,19 @@ export function App() {
             ) : loading ? (
               <div className='loader'></div>
             ) : (
-              <PokemonContainer
-                pokemons={pokemons}
-                search={search}
-                setSearch={setSearch}
-                isFocused={isFocused}
-                setIsFocused={setIsFocused}
-                highlightedIndex={highlightedIndex}
-                setHighlightedIndex={setHighlightedIndex}
-                listRef={listRef}
-              />
+              <>
+                <PokemonContainer
+                  pokemons={pokemons}
+                  search={search}
+                  setSearch={setSearch}
+                  isFocused={isFocused}
+                  setIsFocused={setIsFocused}
+                  highlightedIndex={highlightedIndex}
+                  setHighlightedIndex={setHighlightedIndex}
+                  listRef={listRef}
+                />
+                <ChargeMore handleLoadMore={handleLoadMore} />
+              </>
             )
           }
         />

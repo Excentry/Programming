@@ -132,6 +132,27 @@
   text-transform: capitalize;
 }
 
+.charge-more {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: solid 2px white;
+  background: gray;
+  width: 680px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.charge-more:hover {
+  transform: scale(1.025);
+  background: #ff4e00;
+}
+
 .type-data {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

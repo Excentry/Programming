@@ -12,6 +12,13 @@ export type Pokemon = {
   regiones: string
   tipo_evolucion: string
 }
+export type PokemonFetchProps = {
+  showWelcomePage: boolean
+  search: string | number
+  limit: number
+  offset: number
+  setPokemons: (callback: (prev: Pokemon[]) => Pokemon[]) => void
+}
 
 export type PokemonContainerProps = {
   pokemons: Pokemon[]
@@ -42,4 +49,8 @@ export type PokemonSearchProps = {
   highlightedIndex: number
   setHighlightedIndex: React.Dispatch<React.SetStateAction<number>>
   listRef: React.RefObject<HTMLUListElement | null>
+}
+
+export type ChargeMoreProps = {
+  handleLoadMore: () => void
 }
