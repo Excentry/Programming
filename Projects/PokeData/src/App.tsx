@@ -3,13 +3,13 @@ import { Routes, Route } from 'react-router-dom'
 import {
   getShowWelcomePage,
   saveShowWelcomePage,
-} from './logic/storage/show-welcome-menu'
-import { WelcomePage } from './components/welcomepage/welcome-page'
-import { PokemonContainer } from './components/pokemonpage/pokemon-container'
-import { useWelcomePageState } from './hooks/welcome-page-state'
-import { useFetchPokemons } from './hooks/fetch-pokemons'
-import { PokemonDetails } from './components/dinamicpages/pokemon-details'
-import type { Pokemon } from './types'
+} from '@logic/storage/show-welcome-menu'
+import { WelcomePage } from '@components/welcomepage/welcome-page'
+import { PokemonContainer } from '@components/pokemonpage/pokemon-container'
+import { useWelcomePageState } from '@hooks/welcome-page-state'
+import { useFetchPokemons } from '@hooks/fetch-pokemons'
+import { PokemonDetails } from '@components/dinamicpages/pokemon-details'
+import type { Pokemon } from '@types'
 
 export function App() {
   const [showWelcomePage, setWelcomePage] = useState(getShowWelcomePage)

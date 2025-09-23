@@ -1,4 +1,4 @@
-import type { PokemonSearchProps } from '../../types'
+import type { PokemonSearchProps } from '@types'
 
 export function PokemonSearch({ search, setSearch }: PokemonSearchProps) {
   return (

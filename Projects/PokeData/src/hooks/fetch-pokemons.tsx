@@ -1,6 +1,6 @@
-import { supabase } from '../lib/supabase'
+import { supabase } from '@lib/supabase'
 import { useEffect } from 'react'
-import type { Pokemon } from '../types'
+import type { Pokemon } from '@types'
 export function useFetchPokemons(
   showWelcomePage: boolean,
   search: string | number,

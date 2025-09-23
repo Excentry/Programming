@@ -1,11 +1,11 @@
-import { getPokemonImg } from '../../logic/functions/get-pokemon-img'
+import { getPokemonImg } from '@logic/functions/get-pokemon-img'
 import { Link, useParams } from 'react-router-dom'
 import { useState } from 'react'
 import { FaArrowAltCircleLeft } from 'react-icons/fa'
-import { useFetchCardPokemon } from '../../hooks/fetch-pokemons'
-import { useInfoColor } from '../../hooks/get-info-color'
-import { getContrastYIQ } from '../../logic/functions/get-contrast-color'
-import type { Pokemon } from '../../types'
+import { useFetchCardPokemon } from '@hooks/fetch-pokemons'
+import { useInfoColor } from '@hooks/get-info-color'
+import { getContrastYIQ } from '@logic/functions/get-contrast-color'
+import type { Pokemon } from '@types'
 
 export function PokemonDetails() {
   const { nombre } = useParams()

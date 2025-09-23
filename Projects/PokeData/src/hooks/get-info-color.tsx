@@ -9,9 +9,9 @@ import {
   GenerationColor,
   EvolutionColor,
   MovementColor,
-} from '../logic/colors'
-import { numberNotSend, stringNotSend, defaultColor } from '../logic/consts'
-import type { InfoColorProps } from '../types'
+} from '@logic/colors'
+import { numberNotSend, stringNotSend, defaultColor } from '@logic/consts'
+import type { InfoColorProps } from '@types'
 
 export function useInfoColor({
   ratio = numberNotSend,

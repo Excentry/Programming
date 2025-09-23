@@ -1,4 +1,4 @@
-import type { PokemonNotFoundProps } from '../../types'
+import type { PokemonNotFoundProps } from '@types'
 export function PokemonNotFound({ search }: PokemonNotFoundProps) {
   return (
     <section className='not-pokemons-found-container'>

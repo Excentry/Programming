@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
-import { useInfoColor } from '../../hooks/get-info-color'
-import { getContrastYIQ } from '../../logic/functions/get-contrast-color'
-import { getPokemonImg } from '../../logic/functions/get-pokemon-img'
-import { PokemonNotFound } from './pokemon-not-found'
-import type { PokemonCardProps, UseInfoColorProps } from '../../types'
+import { useInfoColor } from '@hooks/get-info-color'
+import { getContrastYIQ } from '@logic/functions/get-contrast-color'
+import { getPokemonImg } from '@logic/functions/get-pokemon-img'
+import { PokemonNotFound } from '@components/pokemonpage/pokemon-not-found'
+import type { PokemonCardProps, UseInfoColorProps } from '@types'
 
 export function PokemonCard({ pokemons, search }: PokemonCardProps) {
   return (

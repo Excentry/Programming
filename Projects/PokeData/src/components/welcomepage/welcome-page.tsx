@@ -1,4 +1,4 @@
-import type { WelcomePageProps } from '../../types'
+import type { WelcomePageProps } from '@types'
 export function WelcomePage({ toggleWelcomePage }: WelcomePageProps) {
   return (
     <div className='welcome-page'>

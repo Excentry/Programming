@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import type { WelcomeStateProps } from '../types'
+import type { WelcomeStateProps } from '@types'
 
 export function useWelcomePageState({
   setLoading,

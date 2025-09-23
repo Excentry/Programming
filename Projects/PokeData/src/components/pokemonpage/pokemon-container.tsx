@@ -1,6 +1,6 @@
-import { PokemonCard } from './pokemon-card'
-import { PokemonSearch } from './pokemon-search'
-import type { PokemonContainerProps } from '../../types'
+import { PokemonCard } from '@components/pokemonpage/pokemon-card'
+import { PokemonSearch } from '@components/pokemonpage/pokemon-search'
+import type { PokemonContainerProps } from '@types'
 
 export function PokemonContainer({
   pokemons,
