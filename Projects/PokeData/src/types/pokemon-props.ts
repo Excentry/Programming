@@ -17,6 +17,11 @@ export type PokemonContainerProps = {
   pokemons: Pokemon[]
   search: string
   setSearch: React.Dispatch<React.SetStateAction<string>>
+  isFocused: boolean
+  setIsFocused: React.Dispatch<React.SetStateAction<boolean>>
+  highlightedIndex: number
+  setHighlightedIndex: React.Dispatch<React.SetStateAction<number>>
+  listRef: React.RefObject<HTMLUListElement | null>
 }
 
 export type PokemonCardProps = {
@@ -32,4 +37,9 @@ export type PokemonSearchProps = {
   search: string
   setSearch: React.Dispatch<React.SetStateAction<string>>
   Pokemons: Pokemon[]
+  isFocused?: boolean
+  setIsFocused: React.Dispatch<React.SetStateAction<boolean>>
+  highlightedIndex: number
+  setHighlightedIndex: React.Dispatch<React.SetStateAction<number>>
+  listRef: React.RefObject<HTMLUListElement | null>
 }

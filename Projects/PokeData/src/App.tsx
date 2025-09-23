@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import {
   getShowWelcomePage,
@@ -16,6 +16,9 @@ export function App() {
   const [loading, setLoading] = useState(false)
   const [pokemons, setPokemons] = useState<Pokemon[]>([])
   const [search, setSearch] = useState('')
+  const [isFocused, setIsFocused] = useState(false)
+  const [highlightedIndex, setHighlightedIndex] = useState(0)
+  const listRef = useRef<HTMLUListElement>(null)
 
   const { toggleWelcomePage } = useWelcomePageState({
     setLoading,
@@ -41,6 +44,11 @@ export function App() {
                 pokemons={pokemons}
                 search={search}
                 setSearch={setSearch}
+                isFocused={isFocused}
+                setIsFocused={setIsFocused}
+                highlightedIndex={highlightedIndex}
+                setHighlightedIndex={setHighlightedIndex}
+                listRef={listRef}
               />
             )
           }

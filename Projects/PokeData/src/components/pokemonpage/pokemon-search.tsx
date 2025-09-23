@@ -1,68 +1,25 @@
+import { useSearchList } from '@hooks/search-list'
 import type { PokemonSearchProps } from '@types'
-import { useState, useEffect, useRef } from 'react'
 
 export function PokemonSearch({
   search,
   setSearch,
   Pokemons,
+  isFocused,
+  setIsFocused,
+  highlightedIndex,
+  setHighlightedIndex,
+  listRef,
 }: PokemonSearchProps) {
-  const [isFocused, setIsFocused] = useState(false)
-  const [highlightedIndex, setHighlightedIndex] = useState(0)
-  const listRef = useRef<HTMLUListElement>(null)
-
-  const filteredPokemons = Pokemons.filter(p =>
-    p.nom_pokemon.toLowerCase().includes(search.toLowerCase())
-  )
-
-  useEffect(() => {
-    const list = listRef.current
-    if (list) {
-      const activeItem = list.children[highlightedIndex] as HTMLElement
-      if (activeItem) {
-        activeItem.scrollIntoView({
-          block: 'nearest',
-        })
-      }
-    }
-  }, [highlightedIndex])
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (!filteredPokemons.length) return
-
-    if (e.key === 'ArrowDown') {
-      e.preventDefault()
-      setHighlightedIndex(prev => (prev + 1) % filteredPokemons.length)
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault()
-      setHighlightedIndex(
-        prev => (prev - 1 + filteredPokemons.length) % filteredPokemons.length
-      )
-    } else if (e.key === 'Enter') {
-      e.preventDefault()
-      setSearch(filteredPokemons[highlightedIndex].nom_pokemon)
-      setIsFocused(false)
-    }
-  }
-
-  const highlightMatch = (name: string) => {
-    const lowerName = name.toLowerCase()
-    const lowerSearch = search.toLowerCase()
-    const startIndex = lowerName.indexOf(lowerSearch)
-
-    if (startIndex === -1 || search === '') return name
-
-    const before = name.slice(0, startIndex)
-    const match = name.slice(startIndex, startIndex + search.length)
-    const after = name.slice(startIndex + search.length)
-
-    return (
-      <>
-        {before}
-        <strong style={{ color: 'red'}}>{match}</strong>
-        {after}
-      </>
-    )
-  }
+  const { filteredPokemons, handleKeyDown, highlightMatch } = useSearchList({
+    search,
+    setSearch,
+    Pokemons,
+    setIsFocused,
+    highlightedIndex,
+    setHighlightedIndex,
+    listRef,
+  })
 
   return (
     <div className='search-pokemon-container'>
