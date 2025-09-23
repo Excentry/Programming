@@ -15,9 +15,7 @@ export type Pokemon = {
 export type PokemonFetchProps = {
   showWelcomePage: boolean
   search: string | number
-  limit: number
-  offset: number
-  setPokemons: (callback: (prev: Pokemon[]) => Pokemon[]) => void
+  setPokemons: (pokemon: Pokemon[]) => void
 }
 
 export type PokemonContainerProps = {
