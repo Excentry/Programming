@@ -18,16 +18,20 @@ export type PokemonFetchProps = {
   setPokemons: (pokemon: Pokemon[]) => void
 }
 
-export type PokemonContainerProps = {
+type PokemonProps = {
   pokemons: Pokemon[]
   search: string
   setSearch: React.Dispatch<React.SetStateAction<string>>
-  isFocused: boolean
+  isFocused?: boolean
   setIsFocused: React.Dispatch<React.SetStateAction<boolean>>
-  highlightedIndex: number
-  setHighlightedIndex: React.Dispatch<React.SetStateAction<number>>
+  searchMatch: number
+  setSearchMatch: React.Dispatch<React.SetStateAction<number>>
   listRef: React.RefObject<HTMLUListElement | null>
 }
+
+export type PokemonContainerProps = PokemonProps
+
+export type PokemonSearchProps = PokemonProps
 
 export type PokemonCardProps = {
   pokemons: Pokemon[]
@@ -36,17 +40,6 @@ export type PokemonCardProps = {
 
 export type PokemonNotFoundProps = {
   search: string
-}
-
-export type PokemonSearchProps = {
-  search: string
-  setSearch: React.Dispatch<React.SetStateAction<string>>
-  Pokemons: Pokemon[]
-  isFocused?: boolean
-  setIsFocused: React.Dispatch<React.SetStateAction<boolean>>
-  highlightedIndex: number
-  setHighlightedIndex: React.Dispatch<React.SetStateAction<number>>
-  listRef: React.RefObject<HTMLUListElement | null>
 }
 
 export type ChargeMoreProps = {

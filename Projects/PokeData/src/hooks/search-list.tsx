@@ -1,16 +1,17 @@
+import { KEYS } from '@logic/consts'
 import type { PokemonSearchProps } from '@types'
 import { useEffect } from 'react'
 
 export function useSearchList({
   search,
   setSearch,
-  Pokemons,
+  pokemons,
   setIsFocused,
-  highlightedIndex,
-  setHighlightedIndex,
+  searchMatch,
+  setSearchMatch,
   listRef,
 }: PokemonSearchProps) {
-  const filteredPokemons = Pokemons.filter(p =>
+  const pokemonFilter = pokemons.filter(p =>
     p.nom_pokemon.toLowerCase().includes(search.toLowerCase())
   )
 
@@ -18,33 +19,53 @@ export function useSearchList({
     const list = listRef?.current
     if (!list) return
 
-    const activeItem = list.children[highlightedIndex] as HTMLElement
+    const activeItem = list.children[searchMatch] as HTMLElement
     if (activeItem) {
       activeItem.scrollIntoView({
         block: 'nearest',
       })
     }
-  }, [highlightedIndex])
+  }, [searchMatch, listRef])
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (!filteredPokemons.length) return
+  const userPressKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (!pokemonFilter.length) return
 
-    if (e.key === 'ArrowDown') {
+    if (e.key === KEYS.DOWN_KEY) {
       e.preventDefault()
-      setHighlightedIndex(prev => (prev + 1) % filteredPokemons.length)
-    } else if (e.key === 'ArrowUp') {
+      setSearchMatch(prev => (prev + 1) % pokemonFilter.length)
+    }
+
+    if (e.key === KEYS.UP_KEY) {
       e.preventDefault()
-      setHighlightedIndex(
-        prev => (prev - 1 + filteredPokemons.length) % filteredPokemons.length
+      setSearchMatch(
+        prev => (prev - 1 + pokemonFilter.length) % pokemonFilter.length
       )
-    } else if (e.key === 'Enter') {
+    }
+
+    if (e.key === KEYS.ENTER_KEY) {
       e.preventDefault()
-      setSearch(filteredPokemons[highlightedIndex].nom_pokemon)
+      setSearch(pokemonFilter[searchMatch].nom_pokemon)
       setIsFocused(false)
     }
   }
 
-  const highlightMatch = (name: string) => {
+  const userChangeSearch = (value: string) => {
+    setSearch(value)
+
+    if (value.length > 0) {
+      setIsFocused(true)
+      setSearchMatch(0)
+    } else {
+      setIsFocused(false)
+    }
+  }
+
+  const resetSearchConfig = () => {
+    setIsFocused(true)
+    setSearchMatch(0)
+  }
+
+  const addSearchMatch = (name: string) => {
     const lowerName = name.toLowerCase()
     const lowerSearch = search.toLowerCase()
     const startIndex = lowerName.indexOf(lowerSearch)
@@ -64,5 +85,11 @@ export function useSearchList({
     )
   }
 
-  return { filteredPokemons, handleKeyDown, highlightMatch }
+  return {
+    pokemonFilter,
+    userPressKey,
+    userChangeSearch,
+    resetSearchConfig,
+    addSearchMatch,
+  }
 }

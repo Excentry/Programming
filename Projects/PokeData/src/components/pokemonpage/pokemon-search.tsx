@@ -2,22 +2,28 @@ import { useSearchList } from '@hooks/search-list'
 import type { PokemonSearchProps } from '@types'
 
 export function PokemonSearch({
+  pokemons,
   search,
   setSearch,
-  Pokemons,
   isFocused,
   setIsFocused,
-  highlightedIndex,
-  setHighlightedIndex,
+  searchMatch,
+  setSearchMatch,
   listRef,
 }: PokemonSearchProps) {
-  const { filteredPokemons, handleKeyDown, highlightMatch } = useSearchList({
+  const {
+    pokemonFilter,
+    userPressKey,
+    userChangeSearch,
+    resetSearchConfig,
+    addSearchMatch,
+  } = useSearchList({
+    pokemons,
     search,
     setSearch,
-    Pokemons,
     setIsFocused,
-    highlightedIndex,
-    setHighlightedIndex,
+    searchMatch,
+    setSearchMatch,
     listRef,
   })
 
@@ -28,26 +34,30 @@ export function PokemonSearch({
         type='text'
         placeholder='Busca un pokemon'
         value={search}
-        onChange={e => setSearch(e.target.value)}
-        onFocus={() => (setIsFocused(true), setHighlightedIndex(0))}
+        onChange={e => userChangeSearch(e.target.value)}
+        onFocus={() => resetSearchConfig()}
         onBlur={() => setIsFocused(false)}
-        onKeyDown={handleKeyDown}
+        onKeyDown={userPressKey}
         className='search-input'
       />
 
-      {isFocused && filteredPokemons.length > 0 && search.length > 0 && (
+      {isFocused && pokemonFilter.length > 0 && search.length > 0 && (
         <ul className='search-pokemon-list' ref={listRef}>
-          {filteredPokemons.map((poke, index) => (
-            <li
-              key={poke.id_pokemon}
-              onClick={() => setSearch(poke.nom_pokemon)}
-              style={{
-                background: index === highlightedIndex ? '#f0f0f0' : 'white',
-              }}
-            >
-              {highlightMatch(poke.nom_pokemon.toUpperCase())}
-            </li>
-          ))}
+          {pokemonFilter.map((poke, index) => {
+            const { id_pokemon, nom_pokemon } = poke
+
+            return (
+              <li
+                key={id_pokemon}
+                onClick={() => setSearch(nom_pokemon)}
+                style={{
+                  background: index === searchMatch ? '#f0f0f0' : 'white',
+                }}
+              >
+                {addSearchMatch(nom_pokemon.toUpperCase())}
+              </li>
+            )
+          })}
         </ul>
       )}
     </div>

@@ -17,7 +17,7 @@ export function App() {
   const [pokemons, setPokemons] = useState<Pokemon[]>([])
   const [search, setSearch] = useState('')
   const [isFocused, setIsFocused] = useState(false)
-  const [highlightedIndex, setHighlightedIndex] = useState(0)
+  const [searchMatch, setSearchMatch] = useState(0)
   const listRef = useRef<HTMLUListElement>(null)
 
   const { toggleWelcomePage } = useWelcomePageState({
@@ -46,8 +46,8 @@ export function App() {
                   setSearch={setSearch}
                   isFocused={isFocused}
                   setIsFocused={setIsFocused}
-                  highlightedIndex={highlightedIndex}
-                  setHighlightedIndex={setHighlightedIndex}
+                  searchMatch={searchMatch}
+                  setSearchMatch={setSearchMatch}
                   listRef={listRef}
                 />
             )

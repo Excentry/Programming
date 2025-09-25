@@ -8,20 +8,20 @@ export function PokemonContainer({
   setSearch,
   isFocused,
   setIsFocused,
-  highlightedIndex,
-  setHighlightedIndex,
+  searchMatch,
+  setSearchMatch,
   listRef,
 }: PokemonContainerProps) {
   return (
     <section className='container'>
       <PokemonSearch
+        pokemons={pokemons}
         search={search}
         setSearch={setSearch}
-        Pokemons={pokemons}
         isFocused={isFocused}
         setIsFocused={setIsFocused}
-        highlightedIndex={highlightedIndex}
-        setHighlightedIndex={setHighlightedIndex}
+        searchMatch={searchMatch}
+        setSearchMatch={setSearchMatch}
         listRef={listRef}
       />
       <PokemonCard pokemons={pokemons} search={search} />
