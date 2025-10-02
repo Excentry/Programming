@@ -298,11 +298,6 @@
   align-items: center;
   justify-content: center;
   gap: 12px;
-  font-size: 28px;
-  font-weight: 750;
-  color: black;
-  text-transform: uppercase;
-  letter-spacing: 2px;
   border: solid 5px black;
   padding: 12px;
   border-radius: 12px;
@@ -314,12 +309,16 @@
       transparent 40%
     ),
     linear-gradient(red 46%, black 46%, black 54%, white 54%);
+  overflow: hidden;
 }
 
 .search-not-found-text {
-  background-color: white;
-  padding: 6px;
-  border-radius: 50%;
+  font-size: 28px;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: white;
+  mix-blend-mode: difference;
 }
 
 .loader {
