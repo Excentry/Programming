@@ -70,6 +70,3 @@ dist-ssr/
 package-lock.json
 yarn.lock
 pnpm-lock.yaml
-
-# ignore-image
-src/assets/images/profile-image.webp
