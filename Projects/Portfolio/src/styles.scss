@@ -1,0 +1,27 @@
+@use 'index' as *;
+
+* {
+  @include no-space;
+  scrollbar-gutter: stable;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+body {
+  @include no-space;
+  background: $bg-color;
+  overflow-x: hidden;
+  font-family: cursive;
+  user-select: none;
+}
+
+::-webkit-scrollbar {
+  width: 1.5vh;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #5b5b5b;
+  border-radius: 50px;
+  border-radius: 1vh solid transparent;
+  background-clip: content-box;
+}

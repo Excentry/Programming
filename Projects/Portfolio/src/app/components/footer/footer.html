@@ -1,0 +1,27 @@
+<footer class="footer">
+  <div class="info">
+    <span class="title">{{ translate().title }}</span>
+    <div class="social">
+      <a href="https://www.linkedin.com/in/brayan-sj/" target="_blank" class="link"
+        ><svg-LinkedIn [size]="{ width: 24, height: 24 }"></svg-LinkedIn
+      ></a>
+      <a href="https://github.com/Excentry" target="_blank" class="link"
+        ><svg-GitHub [size]="{ width: 24, height: 24 }"></svg-GitHub
+      ></a>
+    </div>
+    <span class="rights">2025 © {{ translate().rights }}</span>
+  </div>
+  <div class="about">
+    <div class="columns column-1">
+      <span class="title">{{ translate().contact }}:</span>
+      <a href="mailto:brayanjimenez5218@gmail.com?subject=Hola%20Brayan" class="link">
+        <svg-Gmail [size]="{ width: 24, height: 24 }"></svg-Gmail>Gmail
+      </a>
+    </div>
+    <div class="columns column-2">
+      <span class="title">{{ translate().location }}:</span>
+      <span>Medellín, Colombia</span>
+      <span class="return" (click)="scrollTop()">{{ translate().returnBtn }}</span>
+    </div>
+  </div>
+</footer>

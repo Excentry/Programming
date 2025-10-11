@@ -1,0 +1,21 @@
+<main class="main-container">
+  <section class="home" id="home">
+    <div class="profile-icon">
+      @if (!imageFallback()) {
+      <img src="assets/images/profile-image.webp" (error)="imageError()" />
+      } @else {
+      <svg-UserImage></svg-UserImage>
+      }
+    </div>
+    <span class="welcome"> - {{ translate().welcome }} - </span>
+    <p class="home-text">
+      {{ translate().paragraph }}
+    </p>
+  </section>
+  <div class="separator"></div>
+  <about-page id="about"></about-page>
+  <div class="separator"></div>
+  <projects-page id="projects"></projects-page>
+  <div class="separator"></div>
+  <skills-page id="skills"></skills-page>
+</main>

@@ -1,0 +1,60 @@
+@use 'mixins' as *;
+
+.main-container {
+  @include center-items;
+  padding: 20px 60px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 8rem;
+  height: 100%;
+  color: white;
+
+  .home {
+    display: flex;
+    flex-direction: column;
+
+    .profile-icon {
+      @include no-space;
+      width: 8rem;
+      height: 8rem;
+      border-radius: 50%;
+      background: linear-gradient(235deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.02));
+      position: relative;
+
+      svg {
+        width: 6rem;
+        height: 6rem;
+        @include position-center;
+      }
+
+      img {
+        width: 8rem;
+        height: 8rem;
+        border-radius: inherit;
+        object-fit: cover;
+      }
+    }
+
+    .welcome {
+      margin-top: 1rem;
+      @include text(32px, 750, #ffcc00, uppercase);
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+
+    .home-text {
+      width: 75ch;
+      font-size: 20px;
+    }
+
+    margin-bottom: 8rem;
+  }
+
+  .separator {
+    width: 100%;
+    transform: scaleX(1.03);
+    height: 0.2rem;
+    background-color: #ffcc00;
+    margin: 4rem 0;
+}
+}

@@ -1,0 +1,25 @@
+@use 'mixins' as *;
+
+.about-container {
+  width: 100%;
+  box-sizing: content-box;
+  padding: 1rem 0;
+  margin-top: 8rem;
+
+  .about-title {
+    @include text(28px, 700, #ffcc00, uppercase, 2px);
+    margin-bottom: 1rem;
+  }
+
+  .about-paragraph {
+    width: 60ch;
+
+    .about-presentation {
+      @include text(18px, 400, white);
+    }
+
+    .about-name {
+      @include text(20px, 700, #ffcc00, uppercase);
+    }
+  }
+}

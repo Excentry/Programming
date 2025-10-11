@@ -1,0 +1,62 @@
+<div class="nav-bar">
+  <!-- <a
+    class="nav"
+    routerLink="/"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    >Contador</a
+  > -->
+  <span class="title"> Portfolio_WEB </span>
+  <ul class="list">
+    <li>
+      <a class="link" [ngClass]="{ active: activeLink === 'home' }" (click)="scrollTop()">{{
+        translate().home
+      }}</a>
+    </li>
+    <li>
+      <a class="link" [ngClass]="{ active: activeLink === 'about' }" (click)="scrollTo('about')">{{
+        translate().about
+      }}</a>
+    </li>
+    <li>
+      <a
+        class="link"
+        [ngClass]="{ active: activeLink === 'projects' }"
+        (click)="scrollTo('projects')"
+        >{{ translate().projects }}</a
+      >
+    </li>
+    <li>
+      <a
+        class="link"
+        [ngClass]="{ active: activeLink === 'skills' }"
+        (click)="scrollTo('skills')"
+        >{{ translate().skills }}</a
+      >
+    </li>
+    <li>
+      <a
+        href="mailto:brayanjimenez5218@gmail.com?subject=Hola%20Brayan"
+        [ngClass]="{ active: activeLink === 'contact' }"
+        (click)="scrollTo('contact')"
+        class="link"
+        >{{ translate().contact }}</a
+      >
+    </li>
+
+    <li class="lenguage-list">
+      <button class="lenguage-list-btn">
+        {{ translate().btnLanguage }}
+        <span class="arrow">&#x25BC;</span>
+      </button>
+      <ul class="lenguage-list-menu">
+        <li (click)="language.switchLang('es')">
+          {{ translate().menuSpanish }}
+        </li>
+        <li (click)="language.switchLang('en')">
+          {{ translate().menuEnglish }}
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

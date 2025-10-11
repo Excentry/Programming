@@ -1,0 +1,157 @@
+@use 'mixins' as *;
+
+.projects-container {
+  width: 100%;
+  padding: 1rem 0;
+  margin-top: 3rem;
+
+  .projects-title {
+    @include text(28px, 700, #ffcc00, uppercase, 2px);
+    margin-bottom: 1rem;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 2fr;
+    grid-template-rows: repeat(4, 1fr);
+    gap: 1rem;
+    margin-inline: 4rem;
+
+    .pokedata {
+      grid-column: 1 / 2;
+      grid-row: 1 / 5;
+      border-radius: 15px;
+      position: relative;
+    }
+
+    .facebook-feed {
+      grid-column: 2 / 3;
+      grid-row: 1 / 3;
+      border-radius: 15px;
+      position: relative;
+    }
+
+    .react-tetris {
+      grid-column: 2 / 3;
+      grid-row: 3 / 5;
+      border-radius: 15px;
+      position: relative;
+    }
+
+    .hover {
+      position: relative;
+
+      &:hover {
+        &::after,
+        .info {
+          opacity: 1;
+        }
+
+        .btns {
+          display: flex;
+        }
+
+        .img {
+          box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.8);
+        }
+      }
+
+      .btns {
+        display: none;
+        gap: 0.5rem;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        z-index: 1000 !important;
+
+        .btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 0.8rem;
+          gap: 5px;
+          width: 120px;
+          font-weight: 800;
+          color: white;
+          border: none;
+          border-radius: 25px;
+          background: linear-gradient(to bottom right, gray, black);
+          cursor: pointer;
+          transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+          a {
+            text-decoration: none;
+            color: inherit;
+          }
+
+          .text {
+            position: relative;
+            z-index: 1;
+            padding: 0.2rem 0;
+            border-radius: 0.4rem;
+            transition: all 0.3s ease-in-out;
+          }
+
+          &:hover {
+            color: #fff;
+            scale: 1.05;
+            box-shadow: 0 0 10px white;
+          }
+
+          &:focus {
+            outline: none;
+            box-shadow: 0 0 5px #ffcc00;
+          }
+        }
+      }
+
+      .info {
+        opacity: 0;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        bottom: 0;
+        left: 0;
+        padding: 1rem;
+        z-index: 100 !important;
+        background-color: rgba(0, 0, 0, 1);
+        width: 100%;
+        height: fit-content;
+        border-radius: 0 0 15px 15px;
+
+        .title {
+          @include text(24px, 700, #ffcc00, uppercase, 2px);
+          margin-bottom: 0.5rem;
+        }
+
+        .description {
+          @include text(12px, 400, white, uppercase, 2px);
+        }
+      }
+
+      &::after {
+        content: '';
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        border-radius: 15px;
+      }
+    }
+
+    .img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 15px;
+      transition: all 0.2s ease-in-out;
+      position: relative;
+    }
+  }
+}

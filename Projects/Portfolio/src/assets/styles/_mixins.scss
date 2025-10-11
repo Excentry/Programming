@@ -1,0 +1,89 @@
+@mixin center-items {
+  width: 90%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+}
+
+@mixin position-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin flex-center($direction, $gap) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+  gap: $gap;
+}
+
+@mixin link-decoration {
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    border-bottom: 2px solid;
+  }
+}
+
+@mixin text($size, $weight, $color, $transform: none, $space: normal) {
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+  text-transform: $transform;
+  letter-spacing: $space;
+}
+
+@mixin card($radius, $padding, $bg) {
+  border-radius: $radius;
+  padding: $padding;
+  background: $bg;
+}
+
+@mixin card-shadow($color) {
+  box-shadow: 0 0 10px $color, 0 0 20px $color, 0 0 40px $color, 0 0 25px $color inset;
+  border: 2px solid $color;
+  border-radius: 20px;
+  scale: 1.1;
+}
+
+@mixin hover-scale($factor, $bg) {
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    scale: $factor;
+    @if $bg {
+      background-color: $bg;
+    }
+  }
+}
+
+@mixin small-text($color, $size) {
+  font-size: $size;
+  color: $color;
+}
+
+@mixin position($position, $display, $top) {
+  position: $position;
+  display: $display;
+
+  @if $top {
+    top: 0;
+  } @else {
+    align-items: end;
+  }
+}
+
+@mixin no-space {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin cube-width($width) {
+  width: $width;
+  height: $width;
+}
