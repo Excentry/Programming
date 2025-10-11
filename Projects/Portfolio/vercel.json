@@ -1,6 +1,4 @@
 {
-  "outputDirectory": "dist/Portfolio",
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
+  "outputDirectory": "dist/Portfolio/browser",
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
