@@ -1,11 +1,7 @@
 <main class="main-container">
   <section class="home" id="home">
     <div class="profile-icon">
-      @if (!imageFallback()) {
       <img src="../../../assets/images/profile-image.webp" (error)="imageError()" />
-      } @else {
-      <svg-UserImage></svg-UserImage>
-      }
     </div>
     <span class="welcome"> - {{ translate().welcome }} - </span>
     <p class="home-text">
