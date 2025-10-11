@@ -2,7 +2,7 @@
   <section class="home" id="home">
     <div class="profile-icon">
       @if (!imageFallback()) {
-      <img src="../../../assets/images/profile-image.webp" (error)="imageError()" />
+      <img src="assets/images/profile-image.webp" (error)="imageError()" />
       } @else {
       <svg-UserImage></svg-UserImage>
       }
