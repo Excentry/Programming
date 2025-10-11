@@ -73,11 +73,11 @@
           justify-content: center;
           font-size: 0.8rem;
           gap: 5px;
-          width: 120px;
+          max-width: 120px;
           font-weight: 800;
           color: white;
           border: none;
-          border-radius: 25px;
+          border-radius: 10px;
           background: linear-gradient(to bottom right, gray, black);
           cursor: pointer;
           transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -121,6 +121,12 @@
         width: 100%;
         height: fit-content;
         border-radius: 0 0 15px 15px;
+
+        .technologies {
+          display: flex;
+          gap: 1rem;
+          margin-bottom: 0.5rem;
+        }
 
         .title {
           @include text(24px, 700, #ffcc00, uppercase, 2px);

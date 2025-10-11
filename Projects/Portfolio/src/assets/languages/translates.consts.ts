@@ -33,6 +33,14 @@ export const LANGUAGE = {
       },
       projects: {
         title: 'Proyectos',
+        codeBtn: 'Codigo',
+        viewBtn: 'Visualizar',
+        pokedataDescription:
+          'Pokedata es una aplicación tipo Pokédex interactiva diseñada para gestionar y mostrar información desde una base de datos, con búsqueda y visualización dinámica de Pokémons.',
+        facebookFeedDescription:
+          'Proyecto basado en el feed de Facebook, para aprender diseño, organización y estructuración.',
+        reactTetrisDescription:
+          'Versión moderna del clásico Tetris desarrollada con React, con lógica personalizada para colisiones, rotación y detección de líneas en tiempo real.',
       },
     },
     footer: {
@@ -77,6 +85,14 @@ export const LANGUAGE = {
       },
       projects: {
         title: 'Projects',
+        codeBtn: 'Code',
+        viewBtn: 'View',
+        pokedataDescription:
+          'Pokedata is an interactive Pokédex application designed to manage and display information from a database, with search and dynamic display of Pokémons.',
+        facebookFeedDescription:
+          'Project based on the Facebook feed, to learn design, organization and structure',
+        reactTetrisDescription:
+          'Modern version of the classic Tetris developed with React, with customized logic for collisions, rotation and real-time line detection.',
       },
     },
     footer: {
