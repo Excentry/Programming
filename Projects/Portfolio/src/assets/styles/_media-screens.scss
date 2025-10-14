@@ -1,0 +1,329 @@
+@use 'mixins' as *;
+@use 'variables' as *;
+
+@mixin responsive-to($device) {
+  @if $device == 'desktop' {
+    @media screen and (max-width: $desktop-width) {
+      .home-container {
+        .home {
+          .home-text {
+            width: 65ch;
+          }
+        }
+
+        .separator {
+          margin-block: 2rem;
+        }
+      }
+
+      .projects-container {
+        .projects-title {
+          font-size: 26px;
+        }
+
+        .projects-grid {
+          margin-inline: 0;
+          .facebook-feed,
+          .react-tetris {
+            aspect-ratio: 1/0.7;
+          }
+        }
+      }
+
+      .footer {
+        .info {
+          .rights {
+            width: 25ch;
+          }
+        }
+      }
+    }
+  } @else if $device == 'tablet' {
+    @media screen and (max-width: $tablet-width) {
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+          Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      }
+
+      .nav-bar {
+        .menu-toggle {
+          display: flex;
+        }
+
+        .list {
+          position: absolute;
+          top: 100%;
+          right: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          padding: 12px;
+          width: fit-content;
+          border-radius: 16px;
+          background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 50%, transparent);
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          list-style: none;
+          transform: translateY(-100%);
+          opacity: 0;
+          pointer-events: none;
+          transition: all 0.3s ease;
+
+          .list-options {
+            margin: 0 1rem;
+            width: 100%;
+            text-align: center;
+
+            .link {
+              color: white;
+              text-transform: uppercase;
+              letter-spacing: 1px;
+              font-weight: 500;
+              display: block;
+              padding: 6px 0;
+              border-radius: 8px;
+              transition: background 0.2s;
+
+              &:hover {
+                background: rgba(255, 255, 255, 0.15);
+              }
+            }
+          }
+
+          .lenguage-list {
+            .lenguage-list-btn {
+              margin: 0 auto;
+              width: 100%;
+              justify-content: center;
+              color: black;
+              font-weight: 800;
+              background: rgba(255, 255, 255, 0.7);
+
+              .arrow {
+                color: black;
+                font-size: 12px;
+                opacity: 1;
+              }
+            }
+
+            .lenguage-list-menu {
+              left: 50%;
+              transform: translateX(-50%);
+              background: rgba(0, 0, 0, 0.9);
+
+              .lenguage-options {
+                width: 100%;
+              }
+            }
+          }
+        }
+
+        .list.active {
+          opacity: 1;
+          pointer-events: auto;
+          transform: translateY(0);
+        }
+
+        .menu-toggle.active .menu-line:nth-child(1) {
+          transform: rotate(45deg) translateY(11px);
+        }
+        .menu-toggle.active .menu-line:nth-child(2) {
+          opacity: 0;
+        }
+        .menu-toggle.active .menu-line:nth-child(3) {
+          transform: rotate(-45deg) translateY(-11px);
+        }
+      }
+
+      .home-container {
+        .home {
+          .welcome {
+            font-size: 30px;
+          }
+
+          .home-text {
+            width: 60ch;
+            font-size: 18px;
+          }
+        }
+
+        .separator {
+          margin-block: 2rem;
+        }
+      }
+
+      .about-container {
+        .about-title {
+          font-size: 26px;
+        }
+
+        .about-paragraph {
+          .about-presentation {
+            font-size: 16px;
+          }
+
+          .about-name {
+            font-size: 18px;
+          }
+        }
+      }
+
+      .projects-container {
+        margin-top: 6rem;
+
+        .projects-title {
+          font-size: 26px;
+        }
+
+        .projects-grid {
+          display: flex;
+          flex-direction: column;
+          margin-inline: 0;
+        }
+      }
+
+      .skills-container {
+        .skills-title {
+          font-size: 26px;
+        }
+      }
+
+      .footer {
+        .info {
+          .title {
+            font-size: 1.8rem;
+          }
+
+          .rights {
+            width: 20ch;
+          }
+        }
+
+        .about {
+          gap: 0.5rem;
+        }
+      }
+    }
+  } @else if $device == 'mobile' {
+    @media screen and (max-width: $mobile-width) {
+      .home-container {
+        .home {
+          .profile-icon {
+            width: 6rem;
+            height: 6rem;
+
+            svg {
+              width: 4rem;
+              height: 4rem;
+            }
+
+            img {
+              width: 6rem;
+              height: 6rem;
+            }
+          }
+
+          .welcome {
+            font-size: 28px;
+          }
+
+          .home-text {
+            width: 35ch;
+            font-size: 16px;
+          }
+        }
+
+        .separator:nth-child(2) {
+          margin-block: 0;
+        }
+      }
+
+      .about-container {
+        margin-top: 4rem;
+
+        .about-title {
+          font-size: 24px;
+          display: flex;
+          justify-content: center;
+        }
+
+        .about-paragraph {
+          width: 35ch;
+
+          .about-presentation {
+            font-size: 14px;
+          }
+
+          .about-name {
+            font-size: 16px;
+          }
+        }
+      }
+
+      .projects-container {
+        margin-top: 4rem;
+
+        .projects-title {
+          font-size: 26px;
+          display: flex;
+          justify-content: center;
+        }
+
+        .projects-grid {
+          .pokedata,
+          .facebook-feed,
+          .react-tetris {
+            aspect-ratio: 1/1.5;
+          }
+        }
+      }
+
+      .skills-container {
+        .skills-title {
+          font-size: 24px;
+          display: flex;
+          justify-content: center;
+        }
+
+        .skills-grid {
+          display: flex;
+          flex-direction: column;
+          gap: 0;
+
+          .bg {
+            margin-bottom: 0;
+          }
+
+          .title {
+            font-size: 16px;
+          }
+        }
+      }
+
+      .footer {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        gap: 0.5rem;
+        margin-top: 2rem;
+
+        .info {
+          position: relative;
+          .rights {
+            width: 100%;
+          }
+        }
+
+        .about {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

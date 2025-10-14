@@ -1,6 +1,6 @@
 @use 'mixins' as *;
 
-.main-container {
+.home-container {
   @include center-items;
   padding: 20px 60px;
   display: flex;
@@ -56,5 +56,5 @@
     height: 0.2rem;
     background-color: #ffcc00;
     margin: 4rem 0;
-}
+  }
 }
