@@ -1,24 +1,24 @@
 <div class="nav-bar">
-  <!-- <a
-    class="nav"
-    routerLink="/"
-    routerLinkActive="active"
-    [routerLinkActiveOptions]="{ exact: true }"
-    >Contador</a
-  > -->
   <span class="title"> Portfolio_WEB </span>
-  <ul class="list">
-    <li>
+
+  <button class="menu-toggle" (click)="toggleMenu()" [class.active]="menuOpen">
+    <span class="menu-line"></span>
+    <span class="menu-line"></span>
+    <span class="menu-line"></span>
+  </button>
+
+  <ul class="list" [class.active]="menuOpen">
+    <li class="list-options">
       <a class="link" [ngClass]="{ active: activeLink === 'home' }" (click)="scrollTop()">{{
         translate().home
       }}</a>
     </li>
-    <li>
+    <li class="list-options">
       <a class="link" [ngClass]="{ active: activeLink === 'about' }" (click)="scrollTo('about')">{{
         translate().about
       }}</a>
     </li>
-    <li>
+    <li class="list-options">
       <a
         class="link"
         [ngClass]="{ active: activeLink === 'projects' }"
@@ -26,7 +26,7 @@
         >{{ translate().projects }}</a
       >
     </li>
-    <li>
+    <li class="list-options">
       <a
         class="link"
         [ngClass]="{ active: activeLink === 'skills' }"
@@ -34,7 +34,7 @@
         >{{ translate().skills }}</a
       >
     </li>
-    <li>
+    <li class="list-options">
       <a
         href="mailto:brayanjimenez5218@gmail.com?subject=Hola%20Brayan"
         [ngClass]="{ active: activeLink === 'contact' }"
@@ -44,16 +44,16 @@
       >
     </li>
 
-    <li class="lenguage-list">
+    <li class="list-options lenguage-list">
       <button class="lenguage-list-btn">
         {{ translate().btnLanguage }}
         <span class="arrow">&#x25BC;</span>
       </button>
       <ul class="lenguage-list-menu">
-        <li (click)="language.switchLang('es')">
+        <li (click)="language.switchLang('es'); menuOpen = false" class="lenguage-options">
           {{ translate().menuSpanish }}
         </li>
-        <li (click)="language.switchLang('en')">
+        <li (click)="language.switchLang('en'); menuOpen = false" class="lenguage-options">
           {{ translate().menuEnglish }}
         </li>
       </ul>

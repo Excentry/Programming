@@ -12,6 +12,11 @@ export class NavbarComponent {
   language = inject(TranslateService);
   translate = computed(() => LANGUAGE[this.language.lang()].navbar);
   activeLink: string = 'home';
+  menuOpen: boolean = false;
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
 
   onChange(event: Event) {
     const select = event.target as HTMLSelectElement;
@@ -23,10 +28,12 @@ export class NavbarComponent {
   scrollTo(section: string) {
     this.activeLink = section;
     this.viewportScroller.scrollToAnchor(section);
+    this.menuOpen = false;
   }
 
   scrollTop() {
     this.activeLink = 'home';
     this.viewportScroller.scrollToPosition([0, 0]);
+    this.menuOpen = false;
   }
 }
