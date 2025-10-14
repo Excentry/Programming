@@ -159,6 +159,7 @@
         }
 
         .about-paragraph {
+          width: 64ch;
           .about-presentation {
             font-size: 16px;
           }
@@ -226,11 +227,13 @@
 
           .welcome {
             font-size: 28px;
+            text-align: center;
           }
 
           .home-text {
-            width: 35ch;
+            width: 32ch;
             font-size: 16px;
+            text-align: center;
           }
         }
 
@@ -249,7 +252,8 @@
         }
 
         .about-paragraph {
-          width: 35ch;
+          width: 32ch;
+          text-align: center;
 
           .about-presentation {
             font-size: 14px;
