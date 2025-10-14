@@ -11,7 +11,7 @@ export const LANGUAGE = {
       menuEnglish: 'Inglés',
     },
     body: {
-      welcome: 'Bienvenido a mi Porfolio',
+      welcome: 'Bienvenido a mi Portfolio',
       paragraph:
         'Estudiante de Ingeniería en Desarrollo de Software, interesado en Backend y Frontend, actualmente estoy en { semestre } semestre en la Universidad Pascual Bravo.',
       about: {
@@ -100,7 +100,7 @@ export const LANGUAGE = {
       rights: 'Brayan J. Some rights reserved.',
       contact: 'Contact Me',
       location: 'Ubication',
-      returnBtn: 'Return to the beginning',
+      returnBtn: 'Return to home',
     },
   },
 };
