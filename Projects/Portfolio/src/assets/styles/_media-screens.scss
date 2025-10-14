@@ -209,6 +209,13 @@
   } @else if $device == 'mobile' {
     @media screen and (max-width: $mobile-width) {
       .home-container {
+        margin-inline: 0;
+        display: flex;
+        flex-direction: column;
+        justify-self: center;
+        align-items: center;
+        width: 100%;
+
         .home {
           .profile-icon {
             width: 6rem;
@@ -231,8 +238,8 @@
           }
 
           .home-text {
-            width: 32ch;
-            font-size: 16px;
+            width: 35ch;
+            font-size: 15px;
             text-align: center;
           }
         }
@@ -247,8 +254,7 @@
 
         .about-title {
           font-size: 24px;
-          display: flex;
-          justify-content: center;
+          text-align: center;
         }
 
         .about-paragraph {
@@ -256,11 +262,11 @@
           text-align: center;
 
           .about-presentation {
-            font-size: 14px;
+            font-size: 15px;
           }
 
           .about-name {
-            font-size: 16px;
+            font-size: 17px;
           }
         }
       }
