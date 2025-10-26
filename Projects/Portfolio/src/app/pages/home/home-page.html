@@ -8,9 +8,11 @@
       }
     </div>
     <span class="welcome"> - {{ translate().welcome }} - </span>
-    <p class="home-text">
-      {{ translate().paragraph }}
-    </p>
+    @if (numSemester() > 10) {
+    <p class="home-text">{{ translate().paragraphFinish }}</p>
+    } @else {
+    <p class="home-text">{{ translate().paragraph }}</p>
+    }
   </section>
   <div class="separator"></div>
   <about-page id="about"></about-page>

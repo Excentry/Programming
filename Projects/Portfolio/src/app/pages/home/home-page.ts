@@ -20,13 +20,17 @@ export class HomePageComponent {
     this.imageFallback.set(true);
   }
 
+  semester = computed(() => calcularSemestreActual(this.language.lang()));
+  numSemester = computed(() => parseInt(this.semester()) || 0);
+
   translate = computed(() => {
     const text = LANGUAGE[this.language.lang()].body;
-    const semestre = calcularSemestreActual(this.language.lang());
 
-    return {
-      ...text,
-      paragraph: text.paragraph.replace('{ semestre }', semestre.toString()),
-    };
+    return this.numSemester() > 10
+      ? text
+      : {
+          ...text,
+          paragraph: text.paragraph.replace('{ semestre }', this.semester().toString()),
+        };
   });
 }

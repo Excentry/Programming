@@ -14,6 +14,8 @@ export const LANGUAGE = {
       welcome: 'Bienvenido a mi Portfolio',
       paragraph:
         'Estudiante de Ingeniería en Desarrollo de Software, interesado en Backend y Frontend, actualmente estoy en { semestre } semestre en la Universidad Pascual Bravo.',
+      paragraphFinish:
+        'Desarrollador de Software interesado en Backend y Frontend, con titulo en Ingeniería cursado en la Universidad Pascual Bravo.',
       about: {
         title: 'Sobre Mi',
         greetings: 'Hola, mi nombre es',
@@ -66,6 +68,8 @@ export const LANGUAGE = {
       welcome: 'Welcome to my Portfolio',
       paragraph:
         'Software Engineer student, interested in Backend and Frontend, currently in { semestre } semester at Universidad Pascual Bravo.',
+      paragraphFinish:
+        'Software Developer interested in Backend and Frontend, with a degree in Engineering completed at Universidad Pascual Bravo.',
       about: {
         title: 'About Me',
         greetings: 'Hi, my name is',

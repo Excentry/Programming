@@ -1,12 +1,12 @@
-export function calcularSemestreActual(lang: 'es' | 'en') {
+export function calcularSemestreActual(lang: 'es' | 'en'): string {
   const initYear = 2024;
   const initSemester: 1 | 2 = 1;
 
   const actualDate = new Date();
   const actualYear = actualDate.getFullYear();
   const actualMonth = actualDate.getMonth() + 1;
-  const semester = actualMonth <= 6 ? 1 : 2;
-  const semesterCount = (actualYear - initYear) * 2 + (semester - initSemester);
+  const semester: 1 | 2 = actualMonth <= 6 ? 1 : 2;
+  const semesterNum = (actualYear - initYear) * 2 + (semester - initSemester) + 1;
 
   const ordinalNumber = {
     es: {
@@ -39,5 +39,5 @@ export function calcularSemestreActual(lang: 'es' | 'en') {
 
   const getOrdinal = (num: number, lang: 'es' | 'en') => `${num}${maps[lang][num] ?? ''}`;
 
-  return getOrdinal(1 + semesterCount, lang);
+  return getOrdinal(semesterNum, lang);
 }
