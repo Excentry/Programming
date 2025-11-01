@@ -13,25 +13,74 @@
     display: flex;
     flex-direction: column;
 
-    .profile-icon {
-      @include no-space;
-      width: 8rem;
-      height: 8rem;
-      border-radius: 50%;
-      background: linear-gradient(235deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.02));
-      position: relative;
+    .more-info {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 2rem;
 
-      svg {
-        width: 6rem;
-        height: 6rem;
-        @include position-center;
-      }
-
-      img {
+      .profile-icon {
+        @include no-space;
         width: 8rem;
         height: 8rem;
-        border-radius: inherit;
-        object-fit: cover;
+        border-radius: 50%;
+        background: linear-gradient(235deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.02));
+        position: relative;
+
+        svg {
+          width: 6rem;
+          height: 6rem;
+          @include position-center;
+        }
+
+        img {
+          width: 8rem;
+          height: 8rem;
+          border-radius: inherit;
+          object-fit: cover;
+        }
+      }
+
+      .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        gap: 5px;
+        min-width: 120px;
+        max-width: 120px;
+        font-weight: 800;
+        color: white;
+        border: none;
+        border-radius: 50px;
+        background: linear-gradient(to bottom right, gray, black);
+        cursor: pointer;
+        transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+        a {
+          text-decoration: none;
+          color: inherit;
+        }
+
+        .text {
+          letter-spacing: 3px;
+          position: relative;
+          z-index: 1;
+          border-radius: 0.4rem;
+          padding: 0.1rem 0;
+          transition: all 0.3s ease-in-out;
+        }
+
+        &:hover {
+          color: #fff;
+          scale: 1.05;
+          box-shadow: 0 0 10px white;
+        }
+
+        &:focus {
+          outline: none;
+          box-shadow: 0 0 5px #ffcc00;
+        }
       }
     }
 

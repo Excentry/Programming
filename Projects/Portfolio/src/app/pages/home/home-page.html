@@ -1,12 +1,17 @@
 <main class="home-container">
   <section class="home" id="home">
-    <div class="profile-icon">
-      @if (!imageFallback()) {
-      <img src="assets/images/profile-image.webp" (error)="imageError()" />
-      } @else {
-      <svg-UserImage></svg-UserImage>
-      }
-    </div>
+    <section class="more-info">
+      <div class="profile-icon">
+        @if (!imageFallback()) {
+        <img src="assets/images/profile-image.webp" (error)="imageError()" />
+        } @else {
+        <svg-UserImage></svg-UserImage>
+        }
+      </div>
+      <a href="https://poke-data-0.vercel.app/" target="_blank" class="btn">
+        <span class="text">CV</span>
+      </a>
+    </section>
     <span class="welcome"> - {{ translate().welcome }} - </span>
     @if (numSemester() > 10) {
     <p class="home-text">{{ translate().paragraphFinish }}</p>
