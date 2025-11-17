@@ -10,8 +10,23 @@ import type { Pokemon } from '@types'
 export function PokemonDetails() {
   const { nombre } = useParams()
   const [pokemon, setPokemon] = useState<Pokemon | null>(null)
+  const [showEvolutionPopup, setShowEvolutionPopup] =
+    useState(false)
+  const [closing, setClosing] = useState(false)
 
-  useFetchCardPokemon(nombre!, setPokemon)
+  function openPopup() {
+    setShowEvolutionPopup(true)
+  }
+
+  function closePopup() {
+    setClosing(true)
+    setTimeout(() => {
+      setShowEvolutionPopup(false)
+      setClosing(false)
+    }, 300)
+  }
+
+  useFetchCardPokemon({ pokemonName: nombre, setPokemon })
 
   if (!pokemon) return null
 
@@ -20,13 +35,15 @@ export function PokemonDetails() {
     ratio_captura,
     habitat,
     habilidad,
-    pok_generacion: generacion,
+    generacion,
     tipos: tipo,
     categoria,
     evoluciones: evolucion,
     movimientos,
     regiones: region,
     tipo_evolucion,
+    id_pos,
+    nom_pos,
   } = pokemon
 
   const {
@@ -64,7 +81,10 @@ export function PokemonDetails() {
       <div className='pokemon-details'>
         <h2
           className='pokemon-name-details'
-          style={{ background: nameColor, color: getContrastYIQ(nameColor) }}
+          style={{
+            background: nameColor,
+            color: getContrastYIQ(nameColor),
+          }}
         >
           {nombre}
         </h2>
@@ -76,7 +96,10 @@ export function PokemonDetails() {
         />
         <span
           className='capture-ratio-details span-details'
-          style={{ background: ratioColor, color: getContrastYIQ(ratioColor) }}
+          style={{
+            background: ratioColor,
+            color: getContrastYIQ(ratioColor),
+          }}
         >
           <h4>Ratio de captura</h4>
           {ratio_captura}
@@ -98,7 +121,9 @@ export function PokemonDetails() {
             color: getContrastYIQ(lightGray),
           }}
         >
-          <h4 className='type-details-title title-details'>Tipo</h4>
+          <h4 className='type-details-title title-details'>
+            Tipo
+          </h4>
           {tipo?.split(',').map((type: string, i: number) => (
             <span
               key={i}
@@ -148,37 +173,43 @@ export function PokemonDetails() {
             background: evolutionColor,
             color: getContrastYIQ(evolutionColor),
           }}
+          onClick={openPopup}
         >
           <h4>Evolucion</h4>
           {evolucion || 'No hay evolucion'}
         </span>
-        <span
-          className='movements-details span-details'
-          style={{
-            background: lightGray,
-            color: getContrastYIQ(lightGray),
-          }}
-        >
-          <h4 className='movements-details-title title-details'>Movimientos</h4>
-          {movimientos ? (
-            movimientos?.split(',').map((move: string, i: number) => (
-              <span
-                key={i}
-                style={{
-                  background: movementColor[i],
-                  color: getContrastYIQ(movementColor[i]),
-                }}
-                className='movements-details-item'
-              >
-                {move.trim()}
-              </span>
-            ))
-          ) : (
-            <center>
-              <span>Work in progress</span>
-            </center>
-          )}
-        </span>
+        {showEvolutionPopup && id_pos && (
+          <div
+            className={`evolution-popup ${
+              closing ? 'hidden' : 'show'
+            }`}
+            title='Click en cualquier lado fuera de la imagen para salir.'
+          >
+            <h1
+              className='evolution-popup-close'
+              onClick={closePopup}
+            >
+              X
+            </h1>
+            <Link
+              to={`/${nom_pos}`}
+              className='evo-item'
+              onClick={closePopup}
+            >
+              <img src={getPokemonImg(id_pos)} />
+            </Link>
+            <span
+              className='evo-text'
+              style={
+                {
+                  '--popup-txt-shadow': nameColor,
+                } as React.CSSProperties
+              }
+            >
+              IR A EVOLUCION
+            </span>
+          </div>
+        )}
         <span
           className='region-details span-details'
           style={{
@@ -188,6 +219,38 @@ export function PokemonDetails() {
         >
           <h4>Region</h4>
           {region || 'Work in progress'}
+        </span>
+
+        <span
+          className='movements-details span-details'
+          style={{
+            background: lightGray,
+            color: getContrastYIQ(lightGray),
+          }}
+        >
+          <h4 className='movements-details-title title-details'>
+            Movimientos
+          </h4>
+          {movimientos ? (
+            movimientos
+              ?.split(',')
+              .map((move: string, i: number) => (
+                <span
+                  key={i}
+                  style={{
+                    background: movementColor[i],
+                    color: getContrastYIQ(movementColor[i]),
+                  }}
+                  className='movements-details-item'
+                >
+                  {move.trim()}
+                </span>
+              ))
+          ) : (
+            <center>
+              <span>Work in progress</span>
+            </center>
+          )}
         </span>
       </div>
     </section>

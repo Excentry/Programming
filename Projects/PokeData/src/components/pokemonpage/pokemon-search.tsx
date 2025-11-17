@@ -10,6 +10,8 @@ export function PokemonSearch({
   searchMatch,
   setSearchMatch,
   listRef,
+  setOffSet,
+  limit,
 }: PokemonSearchProps) {
   const {
     pokemonFilter,
@@ -25,6 +27,8 @@ export function PokemonSearch({
     searchMatch,
     setSearchMatch,
     listRef,
+    setOffSet,
+    limit,
   })
 
   return (
@@ -39,6 +43,7 @@ export function PokemonSearch({
         onBlur={() => setIsFocused(false)}
         onKeyDown={userPressKey}
         className='search-input'
+        autoComplete='off'
       />
 
       {isFocused && pokemonFilter.length > 0 && search.length > 0 && (
@@ -51,7 +56,7 @@ export function PokemonSearch({
                 key={id_pokemon}
                 onClick={() => setSearch(nom_pokemon)}
                 style={{
-                  background: index === searchMatch ? '#f0f0f0' : 'white',
+                  background: index === searchMatch ? 'rgba(255, 255, 255, 0.2)' : '',
                 }}
               >
                 {addSearchMatch(nom_pokemon.toUpperCase())}

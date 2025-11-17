@@ -1,15 +1,45 @@
 import { supabase } from '@lib/supabase'
 import { useEffect } from 'react'
-import type { Pokemon, PokemonFetchProps } from '@types'
+import type {
+  Pokemon,
+  PokemonFetchProps,
+  PokemonFetchSearchProps,
+  PokemonMaxProps,
+} from '@types'
+export function useGetMaxPokemons({
+  setMaxPokemons,
+}: PokemonMaxProps) {
+  useEffect(() => {
+    async function getMaxPokemons() {
+      const { count, error } = await supabase
+        .from('pokemon')
+        .select('*', { count: 'exact', head: true })
+
+      if (error)
+        return console.error(
+          'Error fetching max pokemons:',
+          error
+        )
+
+      setMaxPokemons(count as number)
+    }
+
+    getMaxPokemons()
+  }, [])
+}
 export function useFetchPokemons({
   showWelcomePage,
   search,
   setPokemons,
+  offSet,
 }: PokemonFetchProps) {
   useEffect(() => {
     async function fetchPokemons() {
       try {
-        let query = supabase.from('pokemons').select('*')
+        let query = supabase
+          .from('pokemons')
+          .select('*')
+          .range(0, offSet - 1)
 
         if (search) {
           query = isNaN(search as any)
@@ -33,13 +63,13 @@ export function useFetchPokemons({
     }
 
     fetchPokemons()
-  }, [showWelcomePage, search, setPokemons])
+  }, [showWelcomePage, search, setPokemons, offSet])
 }
 
-export function useFetchCardPokemon(
-  pokemonName: string,
-  setPokemon: (pokemon: Pokemon | null) => void
-) {
+export function useFetchCardPokemon({
+  pokemonName,
+  setPokemon,
+}: PokemonFetchSearchProps) {
   useEffect(() => {
     async function fetchCardPokemon() {
       try {
@@ -47,7 +77,8 @@ export function useFetchCardPokemon(
           .from('pokemon_info')
           .select('*')
           .ilike('nom_pokemon', `${pokemonName}%`)
-          .single<Pokemon>()
+          .limit(1)
+          .maybeSingle()
 
         if (error) {
           console.error('Error fetching card pokemon:', error)
@@ -56,7 +87,10 @@ export function useFetchCardPokemon(
 
         setPokemon(data)
       } catch (err) {
-        console.error('Unexpected error fetching card pokemon:', err)
+        console.error(
+          'Unexpected error fetching card pokemon:',
+          err
+        )
       }
     }
 

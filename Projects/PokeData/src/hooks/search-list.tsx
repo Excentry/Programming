@@ -10,6 +10,8 @@ export function useSearchList({
   searchMatch,
   setSearchMatch,
   listRef,
+  setOffSet,
+  limit,
 }: PokemonSearchProps) {
   const pokemonFilter = pokemons.filter(p =>
     p.nom_pokemon.toLowerCase().includes(search.toLowerCase())
@@ -27,7 +29,9 @@ export function useSearchList({
     }
   }, [searchMatch, listRef])
 
-  const userPressKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const userPressKey = (
+    e: React.KeyboardEvent<HTMLInputElement>
+  ) => {
     if (!pokemonFilter.length) return
 
     if (e.key === KEYS.DOWN_KEY) {
@@ -38,7 +42,9 @@ export function useSearchList({
     if (e.key === KEYS.UP_KEY) {
       e.preventDefault()
       setSearchMatch(
-        prev => (prev - 1 + pokemonFilter.length) % pokemonFilter.length
+        prev =>
+          (prev - 1 + pokemonFilter.length) %
+          pokemonFilter.length
       )
     }
 
@@ -51,6 +57,7 @@ export function useSearchList({
 
   const userChangeSearch = (value: string) => {
     setSearch(value)
+    setOffSet(limit)
 
     if (value.length > 0) {
       setIsFocused(true)
@@ -73,7 +80,10 @@ export function useSearchList({
     if (startIndex === -1 || search === '') return name
 
     const before = name.slice(0, startIndex)
-    const match = name.slice(startIndex, startIndex + search.length)
+    const match = name.slice(
+      startIndex,
+      startIndex + search.length
+    )
     const after = name.slice(startIndex + search.length)
 
     return (
