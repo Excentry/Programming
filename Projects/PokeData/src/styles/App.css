@@ -651,11 +651,12 @@
   font: bold 2rem sans-serif;
   color: white;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 5px;
   text-shadow: 0px 0px 10px var(--popup-txt-shadow),
     0px 0px 20px var(--popup-txt-shadow),
     0px 0px 30px var(--popup-txt-shadow);
   user-select: none;
+  text-decoration: underline;
 }
 
 .evolution-popup-close {

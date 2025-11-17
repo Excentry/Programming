@@ -183,7 +183,6 @@ export function PokemonDetails() {
             className={`evolution-popup ${
               closing ? 'hidden' : 'show'
             }`}
-            title='Click en cualquier lado fuera de la imagen para salir.'
           >
             <h1
               className='evolution-popup-close'
@@ -193,21 +192,23 @@ export function PokemonDetails() {
             </h1>
             <Link
               to={`/${nom_pos}`}
+              key={id_pokemon}
               className='evo-item'
               onClick={closePopup}
             >
               <img src={getPokemonImg(id_pos)} />
+              <h2
+                className='evo-text'
+                style={
+                  {
+                    '--popup-txt-shadow': nameColor,
+                  } as React.CSSProperties
+                }
+              >
+                {nom_pos}
+              </h2>
             </Link>
-            <span
-              className='evo-text'
-              style={
-                {
-                  '--popup-txt-shadow': nameColor,
-                } as React.CSSProperties
-              }
-            >
-              IR A EVOLUCION
-            </span>
+            <span className='evo-text'>IR A LA EVOLUCION</span>
           </div>
         )}
         <span
