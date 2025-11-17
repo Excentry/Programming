@@ -4,6 +4,7 @@ import { getContrastYIQ } from '@logic/functions/get-contrast-color'
 import { getPokemonImg } from '@logic/functions/get-pokemon-img'
 import { PokemonNotFound } from '@components/pokemonpage/pokemon-not-found'
 import type { PokemonCardProps, UseInfoColorProps } from '@types'
+import type React from 'react'
 
 export function PokemonCard({
   pokemons,
@@ -44,7 +45,15 @@ export function PokemonCard({
                 key={id_pokemon}
                 className='pokemon-card-link'
               >
-                <div key={id_pokemon} className='pokemon-card'>
+                <div
+                  key={id_pokemon}
+                  className='pokemon-card'
+                  style={
+                    {
+                      '--border-hover-color': nameColor,
+                    } as React.CSSProperties
+                  }
+                >
                   <img
                     src={getPokemonImg(id_pokemon)}
                     alt={nombre}
