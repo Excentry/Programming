@@ -15,7 +15,6 @@ export function PokemonContainer({
   listRef,
   offSet,
   setOffSet,
-  maxPokemons,
   limit,
   types,
   setTypes,

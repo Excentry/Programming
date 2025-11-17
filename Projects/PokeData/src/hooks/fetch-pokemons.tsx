@@ -5,29 +5,7 @@ import type {
   PokemonFetchProps,
   PokemonFetchSearchProps,
   PokemonFiltersSetProps,
-  PokemonMaxProps,
 } from '@types'
-export function useGetMaxPokemons({
-  setMaxPokemons,
-}: PokemonMaxProps) {
-  useEffect(() => {
-    async function fetchMaxPokemons() {
-      const { count, error } = await supabase
-        .from('pokemon')
-        .select('*', { count: 'exact', head: true })
-
-      if (error)
-        return console.error(
-          'Error fetching max pokemons:',
-          error
-        )
-
-      setMaxPokemons(count as number)
-    }
-
-    fetchMaxPokemons()
-  }, [])
-}
 export function useFetchPokemons({
   showWelcomePage,
   search,

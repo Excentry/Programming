@@ -7,10 +7,7 @@ import {
 import { WelcomePage } from '@components/welcomepage/welcome-page'
 import { PokemonContainer } from '@components/pokemonpage/pokemon-container'
 import { useWelcomePageState } from '@hooks/welcome-page-state'
-import {
-  useFetchPokemons,
-  useGetMaxPokemons,
-} from '@hooks/fetch-pokemons'
+import { useFetchPokemons } from '@hooks/fetch-pokemons'
 import { PokemonDetails } from '@components/dinamicpages/pokemon-details'
 import type { Pokemon } from '@types'
 
@@ -28,7 +25,6 @@ export function App() {
   const listRef = useRef<HTMLUListElement>(null)
   const limit = 9
   const [offSet, setOffSet] = useState(limit)
-  const [maxPokemons, setMaxPokemons] = useState(0)
 
   const [types, setTypes] = useState<string[]>([])
   const [selectedType, setSelectedType] = useState('')
@@ -52,8 +48,6 @@ export function App() {
     setWelcomePage,
     saveShowWelcomePage,
   })
-
-  useGetMaxPokemons({ setMaxPokemons })
 
   useFetchPokemons({
     showWelcomePage,
@@ -89,7 +83,6 @@ export function App() {
                 listRef={listRef}
                 offSet={offSet}
                 setOffSet={setOffSet}
-                maxPokemons={maxPokemons}
                 limit={limit}
                 types={types}
                 setTypes={setTypes}

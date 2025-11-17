@@ -28,10 +28,6 @@ export type PokemonFetchSearchProps = {
   >
 }
 
-export type PokemonMaxProps = {
-  setMaxPokemons: React.Dispatch<React.SetStateAction<number>>
-}
-
 export type PokemonFetchProps = {
   showWelcomePage: boolean
   search: string | number
@@ -112,7 +108,6 @@ export type PokemonContainerProps = PokemonProps &
   PokemonFiltersProps &
   PokemonFilterTypeProps &
   PokemonFilterRegionProps & {
-    maxPokemons: number
     filteredCount: number
   }
 
