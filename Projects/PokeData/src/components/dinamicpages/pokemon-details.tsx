@@ -73,12 +73,19 @@ export function PokemonDetails() {
   const lightGray = '#8f8f8fff'
 
   return (
-    <section>
+    <section className='pokemon-details-container'>
       <Link to='/' className='return-to-cards pokemon-card-link'>
         <FaArrowAltCircleLeft />
         <span> VOLVER </span>
       </Link>
-      <div className='pokemon-details'>
+      <div
+        className='pokemon-details'
+        style={
+          {
+            '--details-card-color': nameColor,
+          } as React.CSSProperties
+        }
+      >
         <h2
           className='pokemon-name-details'
           style={{
@@ -90,7 +97,7 @@ export function PokemonDetails() {
         </h2>
         <img
           src={getPokemonImg(id_pokemon)}
-          alt={nombre}
+          alt={id_pokemon + ' | ' + nombre}
           data-type='image/png'
           className='pokemon-details-image'
         />
@@ -169,10 +176,13 @@ export function PokemonDetails() {
         </span>
         <span
           className='evolution-details span-details'
-          style={{
-            background: evolutionColor,
-            color: getContrastYIQ(evolutionColor),
-          }}
+          style={
+            {
+              background: evolutionColor,
+              color: getContrastYIQ(evolutionColor),
+              '--popup-txt-shadow': nameColor,
+            } as React.CSSProperties
+          }
           onClick={openPopup}
         >
           <h4>Evolucion</h4>
