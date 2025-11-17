@@ -8,4 +8,5 @@ export const KEYS = {
   UP_KEY: 'ArrowUp',
   DOWN_KEY: 'ArrowDown',
   ENTER_KEY: 'Enter',
+  ESC_KEY: 'Escape',
 }

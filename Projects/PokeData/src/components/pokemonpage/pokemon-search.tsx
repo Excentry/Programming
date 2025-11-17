@@ -46,25 +46,30 @@ export function PokemonSearch({
         autoComplete='off'
       />
 
-      {isFocused && pokemonFilter.length > 0 && search.length > 0 && (
-        <ul className='search-pokemon-list' ref={listRef}>
-          {pokemonFilter.map((poke, index) => {
-            const { id_pokemon, nom_pokemon } = poke
+      {isFocused &&
+        pokemonFilter.length > 0 &&
+        search.length > 0 && (
+          <ul className='search-pokemon-list' ref={listRef}>
+            {pokemonFilter.map((poke, index) => {
+              const { id_pokemon, nom_pokemon } = poke
 
-            return (
-              <li
-                key={id_pokemon}
-                onClick={() => setSearch(nom_pokemon)}
-                style={{
-                  background: index === searchMatch ? 'rgba(255, 255, 255, 0.2)' : '',
-                }}
-              >
-                {addSearchMatch(nom_pokemon.toUpperCase())}
-              </li>
-            )
-          })}
-        </ul>
-      )}
+              return (
+                <li
+                  key={id_pokemon}
+                  onClick={() => setSearch(nom_pokemon)}
+                  style={{
+                    background:
+                      index === searchMatch
+                        ? 'rgba(255, 255, 255, 0.2)'
+                        : '',
+                  }}
+                >
+                  {addSearchMatch(nom_pokemon.toUpperCase())}
+                </li>
+              )
+            })}
+          </ul>
+        )}
     </div>
   )
 }

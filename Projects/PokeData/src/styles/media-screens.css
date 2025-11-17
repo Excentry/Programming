@@ -39,6 +39,21 @@
     width: 550px;
   }
 
+  .filter-display {
+    font-size: 0.9rem;
+    width: 225px;
+  }
+
+  .filter-list {
+    font-size: 0.9rem;
+    width: 225px;
+  }
+
+  .clear-filter-button {
+    font-size: 0.9rem;
+    width: 90px;
+  }
+
   .card-container {
     width: 550px;
   }
@@ -133,11 +148,35 @@
     width: 280px;
     font-size: 1.1rem;
   }
-  
+
   .search-input:focus {
     width: 385px;
   }
-  
+
+  .filters-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5rem;
+  }
+
+  .filter-display {
+    font-size: 0.8rem;
+    width: 190px;
+  }
+
+  .filter-list {
+    font-size: 0.8rem;
+    width: 190px;
+  }
+
+  .clear-filter-button {
+    font-size: 0.8rem;
+    width: 200px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 0.4rem;
+  }
+
   .card-container {
     width: 385px;
   }
@@ -149,23 +188,23 @@
   .pokemon-card-info {
     font-size: 1rem;
   }
-  
+
   .pokemon-card-image {
     margin-top: -7.5px;
     width: 175px;
     height: 150px;
   }
-  
+
   .show-more {
     width: 385px;
     font-size: 1.1rem;
   }
-  
+
   .return-to-cards {
     width: 280px;
     height: 50px;
   }
-  
+
   .pokemon-details {
     margin-top: 5rem;
     margin-bottom: 2rem;

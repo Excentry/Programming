@@ -9,6 +9,8 @@ import type React from 'react'
 export function PokemonCard({
   pokemons,
   search,
+  selectedType,
+  selectedRegion,
 }: PokemonCardProps) {
   return (
     <div className='card-container'>
@@ -120,7 +122,7 @@ export function PokemonCard({
               </Link>
             )
           })
-        : search && <PokemonNotFound search={search} />}
+        : search && <PokemonNotFound search={search} selectedType={selectedType} selectedRegion={selectedRegion} />}
     </div>
   )
 }

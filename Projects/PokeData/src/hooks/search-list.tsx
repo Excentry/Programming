@@ -53,6 +53,10 @@ export function useSearchList({
       setSearch(pokemonFilter[searchMatch].nom_pokemon)
       setIsFocused(false)
     }
+
+    if (e.key === KEYS.ESC_KEY) {
+      setIsFocused(false)
+    }
   }
 
   const userChangeSearch = (value: string) => {

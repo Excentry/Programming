@@ -253,11 +253,104 @@
   background: var(--bg-semi-transparent-white);
 }
 
+.filters-container {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 5rem;
+  margin-bottom: 2px;
+}
+
+.filters {
+  display: flex;
+  gap: 0.5rem
+}
+
+.filter-display {
+  background-color: var(--bg-semi-transparent);
+  color: var(--txt-color);
+  width: 285px;
+  padding: 8px;
+  text-align: center;
+  border-radius: 12px;
+  border: var(--border-default);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  transition: width 0.5s ease-in-out;
+  backdrop-filter: blur(5px);
+}
+
+.filter-display:focus {
+  outline: none;
+  border: var(--border-hover);
+}
+
+.filter-list {
+  border: var(--border-hover);
+  position: absolute;
+  width: 285px;
+  max-height: 160px;
+  overflow-y: auto;
+  border-radius: 8px;
+  margin-top: 2px;
+  padding: 0;
+  list-style: none;
+  background: var(--bg-semi-transparent);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+}
+
+.filter-list::-webkit-scrollbar {
+  width: 0px;
+}
+
+.filter-list li {
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 8px 12px;
+  cursor: pointer;
+  color: var(--txt-color);
+  background: var(--bg-semi-transparent);
+}
+
+.filter-list li:hover {
+  background: var(--bg-semi-transparent-white);
+}
+
+.filter-list li.active {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.clear-filter-button {
+  background: var(--bg-semi-transparent);
+  color: var(--txt-color);
+  width: 100px;
+  padding: 8px;
+  text-align: center;
+  border-radius: 12px;
+  border: var(--border-default);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  transition: transform 0.5s ease-in-out;
+  backdrop-filter: blur(5px);
+}
+
+.clear-filter-button:hover {
+  border: var(--border-hover);
+  cursor: pointer;
+  background: var(--border-hover-color);
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 0 10px red;
+}
+
 .not-pokemons-found-container {
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 25%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -307,7 +400,6 @@
   gap: 16px;
   width: 680px;
   margin: 0 auto;
-  margin-top: 65.8px;
   padding: 16px 0;
 }
 

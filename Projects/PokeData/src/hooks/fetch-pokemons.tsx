@@ -4,13 +4,14 @@ import type {
   Pokemon,
   PokemonFetchProps,
   PokemonFetchSearchProps,
+  PokemonFiltersSetProps,
   PokemonMaxProps,
 } from '@types'
 export function useGetMaxPokemons({
   setMaxPokemons,
 }: PokemonMaxProps) {
   useEffect(() => {
-    async function getMaxPokemons() {
+    async function fetchMaxPokemons() {
       const { count, error } = await supabase
         .from('pokemon')
         .select('*', { count: 'exact', head: true })
@@ -24,32 +25,61 @@ export function useGetMaxPokemons({
       setMaxPokemons(count as number)
     }
 
-    getMaxPokemons()
+    fetchMaxPokemons()
   }, [])
 }
 export function useFetchPokemons({
   showWelcomePage,
   search,
+  selectedType,
+  selectedRegion,
   setPokemons,
   offSet,
+  setFilteredCount,
 }: PokemonFetchProps) {
   useEffect(() => {
     async function fetchPokemons() {
       try {
-        let query = supabase
-          .from('pokemons')
-          .select('*')
-          .range(0, offSet - 1)
+        let idQuery = supabase
+          .from('pokemon_info')
+          .select('id_pokemon')
+
+        if (selectedType)
+          idQuery = idQuery.ilike('tipos', `%${selectedType}%`)
+
+        if (selectedRegion)
+          idQuery = idQuery.eq('regiones', selectedRegion)
 
         if (search) {
-          query = isNaN(search as any)
-            ? query.ilike('nom_pokemon', `${search}%`)
-            : query.eq('id_pokemon', search)
+          idQuery = isNaN(search as any)
+            ? idQuery.ilike('nom_pokemon', `${search}%`)
+            : idQuery.eq('id_pokemon', search)
         }
 
-        query = query.order('id_pokemon', { ascending: true })
+        const { data: filtered, error: filterError } =
+          await idQuery
 
-        const { data, error } = await query
+        if (filterError) {
+          console.error('Error fetching pokemons:', filterError)
+          return
+        }
+
+        if (!filtered || filtered.length === 0) {
+          setFilteredCount(0)
+          setPokemons([])
+          return
+        }
+
+        const ids = filtered.map(p => p.id_pokemon)
+
+        setFilteredCount(ids.length)
+
+        const { data, error } = await supabase
+          .from('pokemons')
+          .select('*')
+          .in('id_pokemon', ids)
+          .order('id_pokemon', { ascending: true })
+          .range(0, offSet - 1)
 
         if (error) {
           console.error('Error fetching pokemons:', error)
@@ -63,7 +93,63 @@ export function useFetchPokemons({
     }
 
     fetchPokemons()
-  }, [showWelcomePage, search, setPokemons, offSet])
+  }, [
+    showWelcomePage,
+    search,
+    selectedType,
+    selectedRegion,
+    setPokemons,
+    offSet,
+  ])
+}
+export function usePokemonFilter({
+  setTypes,
+  setRegion,
+}: PokemonFiltersSetProps) {
+  useEffect(() => {
+    async function fetchPokemonFiltersType() {
+      const { data, error } = await supabase
+        .from('tipo')
+        .select('*')
+
+      if (error) {
+        console.error('Error fetching pokemon filters:', error)
+        return
+      }
+
+      const typeList = data.map((poke: { nom_tipo: string }) =>
+        poke.nom_tipo.trim()
+      )
+      const uniqueTypes = [...new Set(typeList)]
+
+      setTypes(uniqueTypes)
+    }
+
+    async function fetchPokemonFiltersRegion() {
+      const { data, error } = await supabase
+        .from('region')
+        .select('*')
+
+      if (error) {
+        console.error('Error fetching pokemon filters:', error)
+        return
+      }
+
+      const regionList = data.map(
+        (poke: { nom_region: string }) => poke.nom_region.trim()
+      )
+      const uniqueRegion = [...new Set(regionList)]
+
+      setRegion(uniqueRegion)
+    }
+
+    const fetchPokemonFilters = async () => {
+      await fetchPokemonFiltersType()
+      await fetchPokemonFiltersRegion()
+    }
+
+    fetchPokemonFilters()
+  }, [])
 }
 
 export function useFetchCardPokemon({

@@ -19,7 +19,9 @@ export function App() {
     getShowWelcomePage
   )
   const [loading, setLoading] = useState(false)
+
   const [pokemons, setPokemons] = useState<Pokemon[]>([])
+
   const [search, setSearch] = useState('')
   const [isFocused, setIsFocused] = useState(false)
   const [searchMatch, setSearchMatch] = useState(0)
@@ -27,6 +29,22 @@ export function App() {
   const limit = 9
   const [offSet, setOffSet] = useState(limit)
   const [maxPokemons, setMaxPokemons] = useState(0)
+
+  const [types, setTypes] = useState<string[]>([])
+  const [selectedType, setSelectedType] = useState('')
+  const [typeOpen, setTypeOpen] = useState(false)
+  const [typeMatch, setTypeMatch] = useState(0)
+  const [hoveredType, setHoveredType] = useState('')
+  const typeListRef = useRef<HTMLUListElement>(null)
+
+  const [region, setRegion] = useState<string[]>([])
+  const [selectedRegion, setSelectedRegion] = useState('')
+  const [regionOpen, setRegionOpen] = useState(false)
+  const [regionMatch, setRegionMatch] = useState(0)
+  const [hoveredRegion, setHoveredRegion] = useState('')
+  const regionListRef = useRef<HTMLUListElement>(null)
+
+  const [filteredCount, setFilteredCount] = useState(0)
 
   const { toggleWelcomePage } = useWelcomePageState({
     setLoading,
@@ -40,8 +58,11 @@ export function App() {
   useFetchPokemons({
     showWelcomePage,
     search,
+    selectedType,
+    selectedRegion,
     setPokemons,
     offSet,
+    setFilteredCount,
   })
 
   return (
@@ -70,6 +91,29 @@ export function App() {
                 setOffSet={setOffSet}
                 maxPokemons={maxPokemons}
                 limit={limit}
+                types={types}
+                setTypes={setTypes}
+                region={region}
+                setRegion={setRegion}
+                selectedType={selectedType}
+                setSelectedType={setSelectedType}
+                typeOpen={typeOpen}
+                setTypeOpen={setTypeOpen}
+                typeMatch={typeMatch}
+                setTypeMatch={setTypeMatch}
+                hoveredType={hoveredType}
+                setHoveredType={setHoveredType}
+                typeListRef={typeListRef}
+                selectedRegion={selectedRegion}
+                setSelectedRegion={setSelectedRegion}
+                regionOpen={regionOpen}
+                setRegionOpen={setRegionOpen}
+                regionMatch={regionMatch}
+                setRegionMatch={setRegionMatch}
+                regionListRef={regionListRef}
+                hoveredRegion={hoveredRegion}
+                setHoveredRegion={setHoveredRegion}
+                filteredCount={filteredCount}
               />
             )
           }
