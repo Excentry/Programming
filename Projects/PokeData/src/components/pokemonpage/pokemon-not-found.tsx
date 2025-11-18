@@ -11,7 +11,9 @@ export function PokemonNotFound({
           {selectedType &&
             'No se han encontrado pokemons de tipo ' +
               selectedType}
-          {selectedType && selectedRegion && ' y '}
+          {selectedType &&
+            selectedRegion &&
+            ' y de la region ' + selectedRegion}
           {selectedRegion &&
             !selectedType &&
             'No se han encontrado pokemons de la region ' +
