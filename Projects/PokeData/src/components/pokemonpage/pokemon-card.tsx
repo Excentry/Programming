@@ -122,7 +122,13 @@ export function PokemonCard({
               </Link>
             )
           })
-        : search && <PokemonNotFound search={search} selectedType={selectedType} selectedRegion={selectedRegion} />}
+        : (search || selectedType || selectedRegion) && (
+            <PokemonNotFound
+              search={search}
+              selectedType={selectedType}
+              selectedRegion={selectedRegion}
+            />
+          )}
     </div>
   )
 }

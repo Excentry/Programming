@@ -7,17 +7,25 @@ export function PokemonNotFound({
   return (
     <section className='not-pokemons-found-container'>
       <span className='not-pokemons-found'>
-        No se han encontrado pokemons con nombre o codigo
-        parecido a
+        <p>
+          {selectedType &&
+            'No se han encontrado pokemons de tipo ' +
+              selectedType}
+          {selectedType && selectedRegion && ' y '}
+          {selectedRegion &&
+            !selectedType &&
+            'No se han encontrado pokemons de la region ' +
+              selectedRegion}
+        </p>
+        <p>
+          {search &&
+            'No se han encontrado pokemons con nombre o codigo parecido a '}
+        </p>
       </span>
       <span className='search-not-found'>
         <span className='search-not-found-text'>{search}</span>
       </span>
-      <span className='not-pokemons-found'>
-        {selectedType && 'de tipo ' + selectedType}
-        {selectedType && selectedRegion && ' y '}
-        {selectedRegion && 'de la region ' + selectedRegion}
-      </span>
+      <span className='not-pokemons-found'></span>
     </section>
   )
 }
