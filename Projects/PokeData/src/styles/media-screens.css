@@ -177,6 +177,24 @@
     margin-top: 0.4rem;
   }
 
+  .not-pokemons-found-container {
+    top: 50%;
+  }
+
+  .not-pokemons-found {
+    font-size: 1rem;
+    width: 40ch;
+    margin: 0 auto;
+  }
+
+  .search-not-found {
+    width: 350px;
+  }
+
+  .search-not-found-text {
+    font-size: 1rem;
+  }
+
   .card-container {
     width: 385px;
   }
