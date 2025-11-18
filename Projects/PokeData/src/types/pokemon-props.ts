@@ -125,5 +125,5 @@ export type PokemonFilterListProps = {
   match: number
   setMatch: React.Dispatch<React.SetStateAction<number>>
   setHover: React.Dispatch<React.SetStateAction<string>>
-  listRef: React.RefObject<HTMLUListElement>
+  listRef: React.RefObject<HTMLUListElement | null>
 }
