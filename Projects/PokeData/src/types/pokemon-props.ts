@@ -35,7 +35,7 @@ interface searchControls {
   setIsFocused: React.Dispatch<React.SetStateAction<boolean>>
   searchMatch: number
   setSearchMatch: React.Dispatch<React.SetStateAction<number>>
-  listRef: React.RefObject<HTMLUListElement>
+  listRef: React.RefObject<HTMLUListElement | null>
 }
 
 interface typesControls {
@@ -49,7 +49,7 @@ interface typesControls {
   setTypeMatch: React.Dispatch<React.SetStateAction<number>>
   hoveredType: string
   setHoveredType: React.Dispatch<React.SetStateAction<string>>
-  typeListRef: React.RefObject<HTMLUListElement>
+  typeListRef: React.RefObject<HTMLUListElement | null>
 }
 
 interface regionsControls {
@@ -63,7 +63,7 @@ interface regionsControls {
   setRegionMatch: React.Dispatch<React.SetStateAction<number>>
   hoveredRegion: string
   setHoveredRegion: React.Dispatch<React.SetStateAction<string>>
-  regionListRef: React.RefObject<HTMLUListElement>
+  regionListRef: React.RefObject<HTMLUListElement | null>
 }
 
 export type PokemonContainerProps = {
@@ -86,6 +86,12 @@ export type PokemonFiltersProps = {
   regionsControls: regionsControls
 }
 
+export type PokemonNotFoundProps = {
+  search: string
+  selectedType: string
+  selectedRegion: string
+}
+
 export type PokemonFetchProps = {
   showWelcomePage: boolean
   search: string
@@ -97,10 +103,8 @@ export type PokemonFetchProps = {
 }
 
 export type PokemonFetchSearchProps = {
-  pokemonName: string
-  setPokemon: React.Dispatch<
-    React.SetStateAction<Pokemon | undefined>
-  >
+  pokemonName: string | undefined
+  setPokemon: React.Dispatch<React.SetStateAction<Pokemon | null>>
 }
 
 export type PokemonFiltersSetProps = {
