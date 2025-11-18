@@ -1,10 +1,10 @@
 import type { ShowMoreButtonProps } from '@types'
 
 export function ShowMoreButton({
-  offSet,
-  setOffSet,
-  limit,
+  paginationControls,
 }: ShowMoreButtonProps) {
+  const { offSet, setOffSet, limit } = paginationControls
+
   return (
     <button
       className='show-more'

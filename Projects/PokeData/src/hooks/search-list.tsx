@@ -3,17 +3,21 @@ import type { PokemonSearchProps } from '@types'
 import { useEffect } from 'react'
 
 export function useSearchList({
-  search,
-  setSearch,
   pokemons,
-  setIsFocused,
-  searchMatch,
-  setSearchMatch,
-  listRef,
-  setOffSet,
-  limit,
+  searchControls,
+  paginationControls,
 }: PokemonSearchProps) {
-  const pokemonFilter = pokemons.filter(p =>
+  const {
+    search,
+    setSearch,
+    setSearchMatch,
+    setIsFocused,
+    searchMatch,
+    listRef,
+  } = searchControls
+  const { limit, setOffSet } = paginationControls
+
+  const pokemonFilter = pokemons?.filter((p: any) =>
     p.nom_pokemon.toLowerCase().includes(search.toLowerCase())
   )
 
@@ -32,17 +36,19 @@ export function useSearchList({
   const userPressKey = (
     e: React.KeyboardEvent<HTMLInputElement>
   ) => {
-    if (!pokemonFilter.length) return
+    if (!pokemonFilter?.length) return
 
     if (e.key === KEYS.DOWN_KEY) {
       e.preventDefault()
-      setSearchMatch(prev => (prev + 1) % pokemonFilter.length)
+      setSearchMatch(
+        (prev: number) => (prev + 1) % pokemonFilter.length
+      )
     }
 
     if (e.key === KEYS.UP_KEY) {
       e.preventDefault()
       setSearchMatch(
-        prev =>
+        (prev: number) =>
           (prev - 1 + pokemonFilter.length) %
           pokemonFilter.length
       )

@@ -3,29 +3,37 @@ import { useSelectList } from '@hooks/filter-list'
 import type { PokemonFiltersProps } from '@types'
 
 export function PokemonFilters({
-  types,
-  setTypes,
-  region,
-  setRegion,
-  selectedType,
-  setSelectedType,
-  typeOpen,
-  setTypeOpen,
-  typeMatch,
-  setTypeMatch,
-  hoveredType,
-  setHoveredType,
-  typeListRef,
-  selectedRegion,
-  setSelectedRegion,
-  regionOpen,
-  setRegionOpen,
-  regionMatch,
-  setRegionMatch,
-  hoveredRegion,
-  setHoveredRegion,
-  regionListRef,
+  typesControls,
+  regionsControls,
 }: PokemonFiltersProps) {
+  const {
+    types,
+    setTypes,
+    selectedType,
+    setSelectedType,
+    typeOpen,
+    setTypeOpen,
+    typeMatch,
+    setTypeMatch,
+    hoveredType,
+    setHoveredType,
+    typeListRef,
+  } = typesControls
+
+  const {
+    region,
+    setRegion,
+    selectedRegion,
+    setSelectedRegion,
+    regionOpen,
+    setRegionOpen,
+    regionMatch,
+    setRegionMatch,
+    hoveredRegion,
+    setHoveredRegion,
+    regionListRef,
+  } = regionsControls
+
   usePokemonFilter({ setTypes, setRegion })
 
   const typeSelect = useSelectList({
@@ -36,7 +44,6 @@ export function PokemonFilters({
     setIsOpen: setTypeOpen,
     match: typeMatch,
     setMatch: setTypeMatch,
-    hover: hoveredType,
     setHover: setHoveredType,
     listRef: typeListRef,
   })
@@ -49,7 +56,6 @@ export function PokemonFilters({
     setIsOpen: setRegionOpen,
     match: regionMatch,
     setMatch: setRegionMatch,
-    hover: hoveredRegion,
     setHover: setHoveredRegion,
     listRef: regionListRef,
   })

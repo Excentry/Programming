@@ -10,9 +10,8 @@ export function useSelectList({
   setIsOpen,
   match,
   setMatch,
-  listRef,
-  hover,
   setHover,
+  listRef,
 }: PokemonFilterListProps) {
   const wrapperRef = useRef<HTMLDivElement>(null)
 

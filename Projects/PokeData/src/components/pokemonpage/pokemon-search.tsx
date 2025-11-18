@@ -3,16 +3,18 @@ import type { PokemonSearchProps } from '@types'
 
 export function PokemonSearch({
   pokemons,
-  search,
-  setSearch,
-  isFocused,
-  setIsFocused,
-  searchMatch,
-  setSearchMatch,
-  listRef,
-  setOffSet,
-  limit,
+  searchControls,
+  paginationControls,
 }: PokemonSearchProps) {
+  const {
+    search,
+    setSearch,
+    isFocused,
+    setIsFocused,
+    searchMatch,
+    listRef,
+  } = searchControls
+
   const {
     pokemonFilter,
     userPressKey,
@@ -21,14 +23,8 @@ export function PokemonSearch({
     addSearchMatch,
   } = useSearchList({
     pokemons,
-    search,
-    setSearch,
-    setIsFocused,
-    searchMatch,
-    setSearchMatch,
-    listRef,
-    setOffSet,
-    limit,
+    searchControls,
+    paginationControls,
   })
 
   return (
