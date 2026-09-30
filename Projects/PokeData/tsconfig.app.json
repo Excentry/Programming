@@ -24,17 +24,16 @@
     "noUncheckedSideEffectImports": true,
 
     /* Paths */
-    "baseUrl": "./src",
     "paths": {
-      "@App": ["App"],
-      "@assets/*": ["assets/*"],
-      "@components/*": ["components/*"],
-      "@hooks/*": ["hooks/*"],
-      "@images/*": ["images/*"],
-      "@lib/*": ["lib/*"],
-      "@logic/*": ["logic/*"],
-      "@styles/*": ["styles/*"],
-      "@types": ["types"]
+      "@App": ["./src/App"],
+      "@assets/*": ["./src/assets/*"],
+      "@components/*": ["./src/components/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@images/*": ["./src/images/*"],
+      "@lib/*": ["./src/lib/*"],
+      "@logic/*": ["./src/logic/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@types": ["./src/types"]
     }
   },
   "include": ["src"]
