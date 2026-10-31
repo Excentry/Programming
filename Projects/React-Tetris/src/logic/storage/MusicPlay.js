@@ -1,10 +1,18 @@
 const MUSIC_KEY = 'MusicPlay';
 
 export function getStorageMusic() {
-  const savedMusic = localStorage.getItem(MUSIC_KEY);
-  return savedMusic ? JSON.parse(savedMusic) : true;
+  try {
+    const savedMusic = localStorage.getItem(MUSIC_KEY);
+    return savedMusic === null ? true : JSON.parse(savedMusic) === true;
+  } catch {
+    return true;
+  }
 }
 
 export function saveMusic(isPlay) {
-  localStorage.setItem(MUSIC_KEY, JSON.stringify(isPlay));
+  try {
+    localStorage.setItem(MUSIC_KEY, JSON.stringify(isPlay));
+  } catch {
+    return;
+  }
 }
